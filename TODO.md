@@ -127,6 +127,7 @@ Goal: faster, robust scan following the real handle64.exe flow
 - [x] `.iss`: `{pf}`, `admin`, `x64compatible` (app already %APPDATA%/%TEMP%-only, safe)
 - [x] Skill `windows-setup` defaulted to Program Files (+ new `inno-programfiles.iss` template)
 - [x] `AboutText` 0.2.7; `VERSION`+csproj `0.2.7`; build verde; commit + tag `v0.2.7` + push
+- [x] Deploy verificato: silent install in `C:\Program Files\FluentSblock`, ARP HKLM ok, shortcut Start ok, exe installato avviato ok
 
 ## 0.2.6 — versioned setup filename
 
