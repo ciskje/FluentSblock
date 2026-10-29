@@ -282,6 +282,21 @@ public partial class MainWindow : Window
         }
     }
 
+    private void OnDragOver(object sender, DragEventArgs e)
+    {
+        e.Effects = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
+        e.Handled = true;
+    }
+
+    private void OnFileDrop(object sender, DragEventArgs e)
+    {
+        if (e.Data.GetData(DataFormats.FileDrop) is string[] paths && paths.Length > 0)
+        {
+            FilePathBox.Text = paths[0];
+            OnCheckFileClick(sender, new RoutedEventArgs());
+        }
+    }
+
     private async void OnCheckFileClick(object sender, RoutedEventArgs e)
     {
         string path = FilePathBox.Text.Trim().Trim('"');

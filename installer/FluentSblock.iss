@@ -31,7 +31,7 @@ Name: "desktopicon"; Description: "Create a &desktop shortcut"; GroupDescription
 
 [Files]
 Source: "..\dist\FluentSblock.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\dist\LEGGIMI.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\dist\README.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\dist\VERSION.txt"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]

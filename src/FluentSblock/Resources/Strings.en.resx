@@ -34,7 +34,7 @@
   <data name="StatusScanning" xml:space="preserve"><value>Scanning…</value></data>
   <data name="NotElevated" xml:space="preserve"><value>Not elevated — run as administrator for full results</value></data>
   <data name="Elevated" xml:space="preserve"><value>Elevated</value></data>
-  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.0 — lists processes with open files on removable drives.</value></data>
+  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.2 — lists processes with open files on removable drives.</value></data>
   <data name="ScanProgress" xml:space="preserve"><value>Scanning handles {0}/{1}…</value></data>
   <data name="ScanFailedHandles" xml:space="preserve"><value>Cannot read system handles (error 0x{0:X8}). Try running as administrator.</value></data>
   <data name="LocksFound" xml:space="preserve"><value>{0} open handles</value></data>

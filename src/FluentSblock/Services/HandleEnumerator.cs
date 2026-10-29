@@ -7,7 +7,7 @@ namespace FluentSblock.Services;
 
 /// <summary>
 /// Enumerates open File handles and filters by volume.
-/// Technique follows handle64-spec.md: NtQuerySystemInformation(SystemExtendedHandleInformation)
+/// Technique: NtQuerySystemInformation(SystemExtendedHandleInformation)
 /// + DuplicateHandle + NtQueryObject. Read-only, needs SeDebugPrivilege for other users' processes.
 /// </summary>
 public static class HandleEnumerator

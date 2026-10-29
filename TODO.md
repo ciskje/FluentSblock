@@ -1,136 +1,155 @@
 # FluentSblock — TODO.md
 
-Tracciamento attività. Spuntare solo ciò che è verificato con build verde.
-Versione corrente: `0.2.0` (vedi `VERSION`).
+Activity tracking. Check only what is verified with a green build.
+Current version: `0.2.2` (see `VERSION`).
 
-## Legenda versioni
+## Version legend
 
-- `X` MAJOR: breaking / cambio stack (es. WPF→WinUI3).
-- `Y` MINOR: feature visibile (eject, nuove colonne, nuova lingua).
-- `Z` PATCH: fix, testi, stile.
+- `X` MAJOR: breaking / stack change (e.g. WPF→WinUI3).
+- `Y` MINOR: visible feature (eject, new columns, new language).
+- `Z` PATCH: fix, texts, style.
 
-## 0.1.0 — base funzionante (in corso)
+## 0.1.0 — working base (in progress)
 
-Obiettivo: elenca blocchi per disco rimovibile + campo file, menu EFIGS, stile Fluent.
+Goal: list locks per removable drive + file field, EFIGS menu, Fluent style.
 
-- [x] Spec `AGENT.md` approvata
-- [x] Scaffold `src/FluentSblock` (csproj net8.0-windows, App, MainWindow, Models, Services, Themes, Resources EFIGS)
-- [x] `DriveEnumerator`: lettere rimovibili + label/FS/spazio
-- [x] `HandleEnumerator`: NtQuery + DuplicateHandle + NT→DOS, filtro per volume, async + cancel + timeout
-- [x] `FileLockChecker`: Restart Manager per singolo path
-- [x] UI: Menu File/View/Help, ComboBox drive, DataGrid holders, card Controlla-file, StatusBar (stato + admin + versione)
-- [x] Stile Fluent: corner 4/8, Segoe UI Variable, Mica/DWM fallback, light/dark/system, high-contrast
-- [x] Resx EFIGS completi (en master, fr/it/de/es stesse chiavi), switch runtime + `--lang=`
-- [x] `EjectService` stub disabilitato con tooltip "in 0.2.0"
-- [x] Build verde con `--artifacts-path C:/Temp/opencode/FluentSblock-artifacts`
-- [ ] Test manuali: (a) no-USB empty, (b) USB+Notepad holder, (c) campo file locked, (d) 5 lingue
+- [x] `AGENT.md` spec approved
+- [x] `src/FluentSblock` scaffold (net8.0-windows csproj, App, MainWindow, Models, Services, Themes, EFIGS Resources)
+- [x] `DriveEnumerator`: removable letters + label/FS/space
+- [x] `HandleEnumerator`: NtQuery + DuplicateHandle + NT→DOS, per-volume filter, async + cancel + timeout
+- [x] `FileLockChecker`: Restart Manager for single path
+- [x] UI: File/View/Help menu, drive ComboBox, holders DataGrid, Check-file card, StatusBar (state + admin + version)
+- [x] Fluent style: corner 4/8, Segoe UI Variable, Mica/DWM fallback, light/dark/system, high-contrast
+- [x] Full EFIGS resx (en master, fr/it/de/es same keys), runtime switch + `--lang=`
+- [x] `EjectService` stub disabled with "in 0.2.0" tooltip
+- [x] Green build with `--artifacts-path C:/Temp/opencode/FluentSblock-artifacts`
+- [ ] Manual tests: (a) no-USB empty, (b) USB+Notepad holder, (c) locked file field, (d) 5 languages
 - [ ] Tag `v0.1.0`
 
-## 0.1.1 — fix rilevamento USB esterni (verificato)
+## 0.1.1 — external USB detection fix (verified)
 
-Obiettivo: E: (SSD USB, `DRIVE_FIXED` + BusType USB) deve comparire.
+Goal: E: (USB SSD, `DRIVE_FIXED` + USB BusType) must appear.
 
-- [x] `DriveEnumerator`: include `DRIVE_FIXED` se `IsUsbOrHotplug` (BusType USB via `IOCTL_STORAGE_QUERY_PROPERTY` o `DeviceHotplug` via `IOCTL_STORAGE_GET_HOTPLUG_INFO`)
+- [x] `DriveEnumerator`: include `DRIVE_FIXED` when `IsUsbOrHotplug` (USB BusType via `IOCTL_STORAGE_QUERY_PROPERTY` or `DeviceHotplug` via `IOCTL_STORAGE_GET_HOTPLUG_INFO`)
 - [x] Test harness `C:/Temp/opencode/TestDrives`: `count=1`, `E: | COR500 | exFAT`, `C/D=False E=True`
-- [x] `VersionText` dinamica da assembly, `AboutText` 0.1.1 nei 5 resx, `VERSION`+csproj `0.1.1`, rebuild verde
-- [ ] Test manuale: aprire app da `run-debug.bat` e verificare E: visibile + scansione holder
+- [x] Dynamic `VersionText` from assembly, `AboutText` 0.1.1 in 5 resx, `VERSION`+csproj `0.1.1`, green rebuild
+- [ ] Manual test: open app from `run-debug.bat` and verify visible E: + holder scan
 - [ ] Tag `v0.1.1`
 
-## 0.1.5 — card file spostabile sopra/sotto (da verificare: build + manuale)
+## 0.1.5 — movable file card (to verify: build + manual)
 
-Obiettivo: la card "Controlla file" si sposta sopra/sotto i risultati con pulsante in intestazione.
+Goal: the "Check file" card moves above/below results via header button. (Superseded: replaced by draggable splitter, same version.)
 
-- [x] Splitter trascinabile tra risultati e card file (al posto del pulsante sposta); card con altezza minima
-- [x] Stesso file aperto più volte: una sola riga (primo handle)
-- [x] Sfoglia: stessa finestra per file e cartelle (`BrowseTitle` 5 lingue)
-- [x] Icone vettoriali inline (refresh/eject/exit/theme/language/about/folder/search/chevron) su bottoni, menu, lista drive; barra accento DWM; pallino stato; conteggi in accento
-- [x] Spinner: icona refresh e lente ruotano via timer UI durante la scansione, stop + reset a zero in `finally`
+- [x] Draggable splitter between results and file card (instead of the move button); card with minimum height
+- [x] Same file open multiple times: single row (first handle)
+- [x] Browse: one dialog for files and folders (`BrowseTitle` 5 languages)
+- [x] Inline vector icons (refresh/eject/exit/theme/language/about/folder/search/chevron) on buttons, menus, drive list; DWM accent bar; status dot; counts in accent
+- [x] Spinner: refresh icon and lens rotate via UI timer during scans, stop + reset to zero in `finally`
+- [x] Blue rotating ring in the check-file button during scans (lens still at rest)
 - [x] `AboutText` 0.1.5; `VERSION`+csproj `0.1.5`
-- [x] Build verde + smoke GUI (avvio, resta viva, icone/risorse ok)
-- [x] `dist/`: release self-contained single-file (154 MB) + `VERSION.txt` + `LEGGIMI.txt`, smoke su SSD ok
-- [x] `installer/`: setup per-utente Inno (`FluentSblock.iss` + `build-setup.bat`, GUID dedicato, no UAC, no check .NET) → `FluentSblock-Setup.exe` 49 MB in `dist/`; verifica statica ok (firma versione corretta); silent-test bloccato da SmartScreen (exe non firmato) — prima esecuzione: "Ulteriori informazioni" → "Esegui comunque"
-- [ ] Test manuale: click sposta sopra/sotto, testi in 2 lingue
+- [x] Green build + GUI smoke (launch, stays alive, icons/resources ok)
+- [x] `dist/`: self-contained single-file release (154 MB) + `VERSION.txt` + `README.txt`, SSD smoke ok
+- [x] `installer/`: per-user Inno setup (`FluentSblock.iss` + `build-setup.bat`, dedicated GUID, no UAC, no .NET check) → `FluentSblock-Setup.exe` 49 MB in `dist/`; static verification ok (correct version signature); silent test blocked by SmartScreen (unsigned exe) — first run: "More info" → "Run anyway"
+- [ ] Manual test: drag splitter, texts in 2 languages
 - [ ] Tag `v0.1.5`
 
-## 0.1.4 — fix path di rete UNC/MUP (verificato headless)
+## 0.1.4 — UNC/MUP network path fix (headless verified)
 
-Obiettivo: il campo file deve trovare i lock anche su drive mappati (`Z:`) e UNC.
+Goal: the file field must find locks on mapped drives (`Z:`) and UNC too.
 
-- [x] Match multiforma: DOS + NT (`QueryDosDevice`) + UNC (`WNetGetUniversalName`) + MUP per campo file e scansione drive
-- [x] Nomi MUP mostrati in forma UNC (`\\server\share\...`) invece di `\Device\Mup\...`
-- [x] `AboutText` 0.1.4; `VERSION`+csproj `0.1.4`; build verde
-- [x] Harness headless su `Z:\Lavorazioni\2026\AI\FluentSblock`: COUNT=14 (explorer, opencode, dotnet, cmd, bash) con utente
-- [ ] Test manuale: campo file con path `Z:` e UNC; drive `Z:` (se rimovibile/mappato)
+- [x] Multi-form match: DOS + NT (`QueryDosDevice`) + UNC (`WNetGetUniversalName`) + MUP for file field and drive scan
+- [x] MUP names shown as UNC (`\\server\share\...`) instead of `\Device\Mup\...`
+- [x] `AboutText` 0.1.4; `VERSION`+csproj `0.1.4`; green build
+- [x] Headless harness on `Z:\Lavorazioni\2026\AI\FluentSblock`: COUNT=14 (explorer, opencode, dotnet, cmd, bash) with user
+- [ ] Manual test: file field with `Z:` and UNC paths; `Z:` drive (if removable/mapped)
 - [ ] Tag `v0.1.4`
 
-## 0.1.3 — fix da audit repo (da verificare manuale)
+## 0.1.3 — repo audit fixes (manual verification pending)
 
-Obiettivo: chiudere i finding Must/Should dell'audit 2026-10-28 senza nuove feature.
+Goal: close the 2026-10-28 audit Must/Should findings with no new features.
 
-- [x] F5 collegato a refresh (era binding vuoto); singolo scan all'avvio (niente più doppio scan)
-- [x] `IsUsbOrHotplug` apre `\\.\X:` con accesso 0 (funziona anche non-admin)
-- [x] Nome processo dall'handle già aperto (`QueryFullProcessImageNameW`), fallback `pid:N`
-- [x] Restart Manager sotto token (30 s valgono anche per RM); ramo if/else identico rimosso
-- [x] Tema Light/Dark disabilitati (0.2.0); `ApplySystemBackdrop` vuoto + `EjectService.IsAvailable` rimossi; `EjectNotImplemented` in resx
-- [x] `RemovableDrive` ridotto a Letter+Label (via FS/spazio/DevicePath morti e P/Invoke doppi); lista mostra label
-- [x] `LocksFound`/`RmFallback` in resx (5 lingue); `VersionText` senza letterali datati; `_cts` disposed
-- [x] `AboutText` 0.1.3; `VERSION`+csproj `0.1.3`; build verde
-- [x] Harness headless su C: (vedi 0.1.2, da ripetere dopo i fix)
-- [ ] Test manuali: (a) no-USB empty, (b) USB+Notepad holder+utente, (c) campo file, (d) 5 lingue, F5, non-admin E: visibile
+- [x] F5 wired to refresh (was an empty binding); single scan at startup (no more double scan)
+- [x] `IsUsbOrHotplug` opens `\\.\X:` with zero access (also works non-admin)
+- [x] Process name from the already-open handle (`QueryFullProcessImageNameW`), `pid:N` fallback
+- [x] Restart Manager under token (30 s also covers RM); identical if/else branch removed
+- [x] Light/Dark theme disabled (0.2.0); empty `ApplySystemBackdrop` + `EjectService.IsAvailable` removed; `EjectNotImplemented` in resx
+- [x] `RemovableDrive` reduced to Letter+Label (dead FS/space/DevicePath and duplicate P/Invokes gone); list shows label
+- [x] `LocksFound`/`RmFallback` in resx (5 languages); dateless `VersionText`; `_cts` disposed
+- [x] `AboutText` 0.1.3; `VERSION`+csproj `0.1.3`; green build
+- [x] Headless harness on C: (see 0.1.2, repeat after fixes)
+- [ ] Manual tests: (a) no-USB empty, (b) USB+Notepad holder+user, (c) file field, (d) 5 languages, F5, non-admin visible E:
 - [ ] Tag `v0.1.3`
 
-Obiettivo: scansione più veloce/robusta seguendo il flusso reale di handle64.exe
-(`FUN_140007a40` probe classe 64, `FUN_140006190` open-per-PID, `SetThreadErrorMode`).
+## 0.1.2 — faster/robust scan from real handle64.exe flow
 
-- [x] Probe-first: `NtQuerySystemInformation(64, NULL, 0)` per dimensione esatta; errore esplicito localizzato (`ScanFailedHandles`) invece di lista vuota silenziosa
-- [x] Un `OpenProcess` per PID (raggruppa handle, ~200 open invece di ~120k) + `SetThreadErrorMode(SEM_FAILCRITICALERRORS)` a inizio scansione
-- [x] Mappa DOS longest-prefix-first (fix collisione `HarddiskVolume1` vs `HarddiskVolume10`)
-- [x] `NtQueryObject` nome con buffer auto-espandente + timeout 100 ms su thread dedicato (no hang su pipe; dup sempre chiuso dal worker)
-- [x] Colonna Utente reale via token→SID→`LookupAccountSidW` (riusa handle processo già aperto)
-- [x] Nuove chiavi resx `ScanProgress`/`ScanFailedHandles` nelle 5 lingue; `AboutText` 0.1.2; `VERSION`+csproj `0.1.2`; build verde
-- [x] Harness headless su C:: 160316 handle scansionati, 3022 holder File, `WITHUSER=3022`, nessun hang
-- [ ] Test manuali: (b) USB+Notepad holder con utente visibile, (c) campo file locked
+Goal: faster, robust scan following the real handle64.exe flow
+(`FUN_140007a40` class-64 probe, `FUN_140006190` per-PID open, `SetThreadErrorMode`).
+
+- [x] Probe-first: `NtQuerySystemInformation(64, NULL, 0)` for the exact size; explicit localized error (`ScanFailedHandles`) instead of a silent empty list
+- [x] One `OpenProcess` per PID (grouped handles, ~200 opens instead of ~120k) + `SetThreadErrorMode(SEM_FAILCRITICALERRORS)` at scan start
+- [x] Longest-prefix-first DOS map (fixes `HarddiskVolume1` vs `HarddiskVolume10` collision)
+- [x] `NtQueryObject` name with self-growing buffer + 100 ms timeout on a dedicated worker (no pipe hangs; worker always closes dup)
+- [x] Real User column via token→SID→`LookupAccountSidW` (reuses the already-open process handle)
+- [x] New `ScanProgress`/`ScanFailedHandles` resx keys (5 languages); `AboutText` 0.1.2; `VERSION`+csproj `0.1.2`; green build
+- [x] Headless harness on C:: 160316 handles scanned, 3022 File holders, `WITHUSER=3022`, no hangs
+- [ ] Manual tests: (b) USB+Notepad holder with visible user, (c) locked file field
 - [ ] Tag `v0.1.2`
 
-## 0.2.0 — espulsione (in corso: eject implementato, resto invariato)
+## 0.2.1 — drag & drop onto the file field
 
-- [x] `EjectService`: `CM_Request_Device_EjectW` bottom-up (disco→parent→grandparent) con skip non-rimovibili, veto localizzato, conferma se holder>0, pulsanti abilitati con drive selezionato, refresh lista dopo eject
-- [x] Colonna Accesso (mask `GrantedAccess`, già raccolta) + ordinamento DataGrid nativo; resx `ColAccess`
-- [x] Export CSV/TSV (menu File, come `handle -v/-vt`); resx `MenuExportCsv/Tsv`
-- [x] Refresh auto su `WM_DEVICECHANGE` (hook HwndSource, guardia anti-reentranza)
-- [x] USB-HDD: `HasRemovableAncestor` (DN_REMOVABLE nella catena) come terzo check in `DriveEnumerator`
-- [x] `QueryNameTimeoutMs` configurabile via proprietà (20..5000, default 100); UI in 0.3.0 con persistenza
-- [x] Log `%TEMP%/FluentSblock.log` + Help>Mostra log; resx `MenuShowLog`
-- [x] Harness: Access popolati (`0x0012019F`...), catena C: ok, `HasRemovableAncestor(C:)=False`, log scritto; smoke GUI ok
-- [x] `PreviewEjectTarget` per diagnostica senza espellere; errori Win32 catturati subito (niente più 0x0 mascherati)
-- [x] Anello blu rotante nel pulsante check-file durante la scansione (lente ferma a riposo)
-- [x] Catena eject validata headless su C: (NVMe→controller→root); fix offset stringa detail SetupDi (era +8, è +4)
-- [x] `EjectOk/Veto/Error/ConfirmTitle/ConfirmText` in resx (5 lingue); `AboutText` 0.2.0; `VERSION`+csproj `0.2.0`; build verde
-- [ ] Test manuale: collegare E:, verificare preview implicita, espellere davvero (conferma con holder, veto con file aperto)
-- [ ] Test manuale: export CSV/TSV, Help>log, inserimento USB → refresh auto
+- [x] Drop file/folder anywhere on the window → path into the field + automatic check (`AllowDrop`, copy cursor)
+- [x] `AboutText` 0.2.1; `VERSION`+csproj `0.2.1`; green build
+- [ ] Manual test: drop files and folders from Explorer (UNC too)
+- [ ] Tag `v0.2.1`
+
+## 0.2.0 — ejection (in progress: eject implemented, rest unchanged)
+
+- [x] `EjectService`: bottom-up `CM_Request_Device_EjectW` (disk→parent→grandparent) skipping non-removables, localized veto, confirmation when holders>0, buttons enabled with selected drive, list refresh after eject
+- [x] Access column (`GrantedAccess` mask, already collected) + native DataGrid sorting; `ColAccess` resx
+- [x] CSV/TSV export (File menu, like `handle -v/-vt`); `MenuExportCsv/Tsv` resx
+- [x] Auto-refresh on `WM_DEVICECHANGE` (HwndSource hook, anti-reentrancy guard)
+- [x] USB-HDD: `HasRemovableAncestor` (DN_REMOVABLE in chain) as third check in `DriveEnumerator`
+- [x] `QueryNameTimeoutMs` configurable via property (20..5000, default 100); UI in 0.3.0 with persistence
+- [x] Log `%TEMP%/FluentSblock.log` + Help>Show log; `MenuShowLog` resx
+- [x] Harness: populated Access (`0x0012019F`...), C: chain ok, `HasRemovableAncestor(C:)=False`, log written; GUI smoke ok
+- [x] Tag `v0.2.0` on HEAD (annotated); retroactive 0.1.0–0.1.5 tags skipped: single commit, would mislead
+- [x] `dist/` realigned to HEAD (re-signed exe+setup+msix)
+- [x] `PreviewEjectTarget` for ejection-free diagnostics; Win32 errors captured immediately (no more masked 0x0)
+- [x] Blue rotating ring in the check-file button during scans (lens still at rest)
+- [x] Eject chain headless-validated on C: (NVMe→controller→root); SetupDi detail-string offset fix (was +8, is +4)
+- [x] `EjectOk/Veto/Error/ConfirmTitle/ConfirmText` in resx (5 languages); `AboutText` 0.2.0; `VERSION`+csproj `0.2.0`; green build
+- [ ] Manual test: plug E:, implicit preview check, real eject (confirmation with holders, veto with open file)
+- [ ] Manual test: CSV/TSV export, Help>log, USB insertion → auto-refresh
 - [ ] Tag `v0.2.0`
-- [ ] (rinviati) USB-HDD parent check, `WM_DEVICECHANGE`, colonne Share/Access, export CSV, log diagnostico
 
-## 0.3.0 — usabilità (in corso)
+## 0.2.2 — full English source/docs/specs
 
-- [x] Icona app: lucchetto blu generato via codice, sfondo trasparente, 16/32/48/256 PNG-in-ICO; `ApplicationIcon` + `SetupIconFile`
-- [x] Ricerca/filtro holders (sottostringa processo/file), copia percorso, "Apri percorso" (menu riga)
-- [x] Persistenza: tema/lingua/colonne in `%APPDATA%/FluentSblock/settings.json` (+ `--lang=` vince); resx `FilterHint/MenuCopyPath/MenuOpenLocation/MenuAutostart`
-- [x] Autostart opzionale (menu Visualizza, chiave HKCU Run) + AUMID `FluentSblock` per taskbar
-- [x] Harness: settings roundtrip ok; smoke GUI ok
-- [x] Pacchetto MSIX firmato (`dist/FluentSblock.msix` 67 MB, cert autofirmato `CN=FluentSblock` 5 anni, loghi+splash generati, `installer/FluentSblock.cer`); `signtool verify` ok dopo trust; setup+exe in `dist/` riaggiornati alla build corrente
-- [ ] Sblocco utente: cert in TrustedPeople (admin) + doppio clic msix + avvio da Start
-- [ ] Test manuale: filtro, copia/apri, cambio lingua persistente, autostart on/off, icona visibile
+- [x] `AGENT.md`, `TODO.md` translated to English
+- [x] `dist/LEGGIMI.txt` → `dist/README.txt` (+ `.iss` reference)
+- [x] `run-debug.bat` / `installer/build-setup.bat` messages in English
+- [x] `AboutText` 0.2.2; `VERSION`+csproj `0.2.2`; green build
+- [ ] Tag `v0.2.2`
 
-## 1.0.0 — stabile
+## 0.3.0 — usability (in progress)
 
-- [x] Valutazione migrazione WinUI 3: RESTA WPF. Niente benefici misurabili (UI già Fluent-manuale, Mica via DWM, per-user xcopy senza packaging); WinUI costerebbe packaged/MSIX obbligatorio + drop Windows 10 1809-1909. Rivalutare solo se serve Store.
-- [x] Suite test: `src/FluentSblock.Tests` xUnit, golden fixture vs `handle64.exe -v` (passato: fixture trovata da entrambi in 24 s)
-- [x] Accessibilità: mnemonici `_` già in 5 lingue, F5 + Ctrl+L focus campo, nessun solo-mouse path (menu contestuale anche da tastiera via tasto Menu? verifica manuale)
-- [ ] Accessibilità audit (Narrator, contrasto, solo-tastiera) — manuale
-- [ ] EFIGS review madrelingua, guida utente nelle 5 lingue — madrelingua
+- [x] App icon: code-generated blue padlock, transparent background, 16/32/48/256 PNG-in-ICO; `ApplicationIcon` + `SetupIconFile`
+- [x] Holders search/filter (process/file substring), copy path, "Open location" (row menu)
+- [x] Persistence: theme/language/columns in `%APPDATA%/FluentSblock/settings.json` (`--lang=` wins); `FilterHint/MenuCopyPath/MenuOpenLocation/MenuAutostart` resx
+- [x] Optional autostart (View menu, HKCU Run key) + `FluentSblock` AUMID for taskbar
+- [x] Harness: settings roundtrip ok; GUI smoke ok
+- [x] Signed MSIX package (`dist/FluentSblock.msix` 67 MB, self-signed `CN=FluentSblock` cert 5 years, generated logos+splash, `installer/FluentSblock.cer`); `signtool verify` ok after trust; setup+exe in `dist/` refreshed to current build
+- [ ] User unlock: cert into TrustedPeople (admin) + msix double-click + Start launch
+- [ ] Manual test: filter, copy/open, persistent language change, autostart on/off, visible icon
 
-## Note / decisioni
+## 1.0.0 — stable
 
-- 2026-10-28: scelto WPF .NET8 invece di WinUI3-packaged per build immediata; `Services/` isolati per riuso futuro. (v0.1.0)
-- 2026-10-28: niente chiusura handle e niente driver kernel in v0.x — sola lettura. (sicurezza)
+- [x] WinUI 3 migration evaluation: STAY ON WPF. No measurable benefits (already manual Fluent UI, Mica via DWM, per-user xcopy without packaging); WinUI would cost mandatory packaged/MSIX + dropping Windows 10 1809-1909. Revisit only if Store is needed.
+- [x] Test suite: `src/FluentSblock.Tests` xUnit, golden fixture vs `handle64.exe -v` (passed: fixture found by both in 24 s)
+- [x] Accessibility: `_` mnemonics already in 5 languages, F5 + Ctrl+L field focus, no mouse-only path
+- [ ] Accessibility audit (Narrator, contrast, keyboard-only) — manual
+- [ ] EFIGS native-speaker review, 5-language user guide — native speakers
+
+## Notes / decisions
+
+- 2026-10-28: WPF .NET8 chosen over WinUI3-packaged for immediate build; isolated `Services/` for future reuse. (v0.1.0)
+- 2026-10-28: no handle closing and no kernel driver in v0.x — read-only. (security)
