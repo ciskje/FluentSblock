@@ -1,6 +1,7 @@
-; FluentSblock per-user installer (Inno Setup 6/7).
+; FluentSblock machine installer (Inno Setup 6/7, Program Files, admin).
 ; Payload: self-contained single-file exe from ..\dist (no .NET check needed).
-; Build: iscc installer\FluentSblock.iss  (or installer\build-setup.bat)
+; The app writes only to %APPDATA%/%TEMP%, so Program Files (read-only) is safe.
+; Build: installer\build-setup.bat
 
 #ifndef AppVersion
 #define AppVersion "0.0.0"
@@ -11,9 +12,11 @@ AppId={{9fcbdfc9-81db-487f-87d8-f3ff59af0ae1}
 AppName=FluentSblock
 AppVersion={#AppVersion}
 AppPublisher=FluentSblock
-DefaultDirName={localappdata}\FluentSblock
+DefaultDirName={pf}\FluentSblock
 DefaultGroupName=FluentSblock
-PrivilegesRequired=lowest
+PrivilegesRequired=admin
+ArchitecturesAllowed=x64compatible
+ArchitecturesInstallIn64BitMode=x64compatible
 OutputDir=.
 OutputBaseFilename=FluentSblock-Setup-{#AppVersion}
 Compression=lzma2/max

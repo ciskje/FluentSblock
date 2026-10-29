@@ -5,7 +5,7 @@ Specs for coding agents. Source of truth for purpose, architecture, UI, versioni
 ## 1. Identity
 
 - Name: `FluentSblock` (working title: "who holds files open?")
-- Current version: `0.2.6` — see `VERSION` (single-line `X.Y.Z`).
+- Current version: `0.2.7` — see `VERSION` (single-line `X.Y.Z`).
 - Repo/dir: `Z:\Lavorazioni\2026\AI\FluentSblock` (slow NAS).
 - Stack v0.1: **C# .NET 8 WPF** (no WinUI3 packaging) with manual Fluent 2 styling.
   Reason: builds with only SDK 8.0.425 installed, no extra workloads, single testable exe.
@@ -52,18 +52,18 @@ Responsive: min 800x500, 2-column `NavigationView`-like layout collapsing to 1 u
 ## 5. Architecture / files
 
 ```
-VERSION                         # "0.2.6"
+VERSION                         # "0.2.7"
 run-debug.bat                   # Debug launcher (asks UAC when not elevated)
 README.md                       # GitHub front page (screenshot in docs/)
 LICENSE.txt                     # MIT © 2026 Francesco Ferrara
 docs/screenshot.png             # main window screenshot for README
 screenshot/                     # original user captures (not cropped)
 dist/                           # release: Setup.exe + msix + exe + VERSION.txt + README.txt
-installer/                      # FluentSblock.iss (per-user Inno, versioned output) + build-setup.bat (/DAppVersion from VERSION) + FluentSblock.cer (public)
+installer/                      # FluentSblock.iss (Program Files Inno, versioned output) + build-setup.bat (/DAppVersion from VERSION) + FluentSblock.cer (public)
 AGENT.md                        # this file
 TODO.md                         # activity tracking
 src/FluentSblock/
-  FluentSblock.csproj           # net8.0-windows, UseWPF, x64, Version 0.2.6
+  FluentSblock.csproj           # net8.0-windows, UseWPF, x64, Version 0.2.7
 src/FluentSblock.Tests/
   FluentSblock.Tests.csproj     # xUnit golden: locked fixture vs handle64 -v
   App.xaml[.cs]                 # theme, language, DWM Mica

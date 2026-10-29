@@ -1,7 +1,7 @@
 # FluentSblock — TODO.md
 
 Activity tracking. Check only what is verified with a green build.
-Current version: `0.2.6` (see `VERSION`).
+Current version: `0.2.7` (see `VERSION`).
 
 ## Version legend
 
@@ -121,6 +121,13 @@ Goal: faster, robust scan following the real handle64.exe flow
 - [ ] Manual test: plug E:, implicit preview check, real eject (confirmation with holders, veto with open file)
 - [ ] Manual test: CSV/TSV export, Help>log, USB insertion → auto-refresh
 - [ ] Tag `v0.2.0`
+
+## 0.2.7 — Program Files default install
+
+- [x] `.iss`: `{pf}`, `admin`, `x64compatible` (app already %APPDATA%/%TEMP%-only, safe)
+- [x] Skill `windows-setup` defaulted to Program Files (+ new `inno-programfiles.iss` template)
+- [x] `AboutText` 0.2.7; `VERSION`+csproj `0.2.7`
+- [ ] Tag `v0.2.7`
 
 ## 0.2.6 — versioned setup filename
 
