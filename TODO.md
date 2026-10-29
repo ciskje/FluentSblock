@@ -125,8 +125,8 @@ Goal: faster, robust scan following the real handle64.exe flow
 ## 0.2.11 — dedicated About PNG (ICO frame picker doubt)
 
 - [x] `Assets/about-icon.png` (256px source) decoded at exactly 64px, no ICO frame guessing
-- [x] `AboutText` 0.2.11; `VERSION`+csproj `0.2.11`
-- [ ] Tag `v0.2.11`
+- [x] `AboutText` 0.2.11; `VERSION`+csproj `0.2.11`; commit + tag `v0.2.11` + push
+- [x] Deploy 0.2.11: silent upgrade ok, ARP 0.2.11, `dist/` realigned; installed launch needs UAC click (by design)
 
 ## 0.2.10 — sharp About icon
 
