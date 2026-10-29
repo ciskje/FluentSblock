@@ -43,7 +43,7 @@ Windows has no `/proc`: the app snapshots every open handle with the native
 handle into its own process, resolves type and NT path with `NtQueryObject`,
 converts `\Device\...` to drive letters, and maps PIDs to exe names and owners
 (`SeDebugPrivilege` when available). Single files fall back to Restart Manager
-first. See [`TODO.md`](TODO.md) (roadmap).
+first. See [`AGENT.md`](AGENT.md) (agent spec) and [`TODO.md`](TODO.md) (roadmap).
 
 ## Build from source
 

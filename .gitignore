@@ -4,8 +4,6 @@ obj/
 dist/
 installer/*.exe
 TestResults/
-# Agent specs live in the global config, never in repos
-AGENT.md
 
 # VS / user files
 .vs/
