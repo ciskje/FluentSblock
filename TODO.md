@@ -1,7 +1,7 @@
 # FluentSblock — TODO.md
 
 Activity tracking. Check only what is verified with a green build.
-Current version: `0.2.5` (see `VERSION`).
+Current version: `0.2.6` (see `VERSION`).
 
 ## Version legend
 
@@ -121,6 +121,13 @@ Goal: faster, robust scan following the real handle64.exe flow
 - [ ] Manual test: plug E:, implicit preview check, real eject (confirmation with holders, veto with open file)
 - [ ] Manual test: CSV/TSV export, Help>log, USB insertion → auto-refresh
 - [ ] Tag `v0.2.0`
+
+## 0.2.6 — versioned setup filename
+
+- [x] `OutputBaseFilename=FluentSblock-Setup-{#AppVersion}` + `VersionInfoVersion={#AppVersion}.0` (no more hardcoded versions in `.iss`)
+- [x] `build-setup.bat` reads `VERSION` and passes `/DAppVersion=` (single source of truth)
+- [x] `AboutText` 0.2.6; `VERSION`+csproj `0.2.6`
+- [ ] Tag `v0.2.6`
 
 ## 0.2.5 — honest tagline + About dialog with big icon
 

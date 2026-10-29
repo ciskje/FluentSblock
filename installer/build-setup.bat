@@ -9,4 +9,5 @@ if not defined ISCC (
   echo [setup] ISCC.exe not found: install Inno Setup 6/7.
   exit /b 1
 )
-"%ISCC%" "%~dp0FluentSblock.iss"
+for /f "usebackq delims=" %%v in ("%~dp0..\VERSION") do set "VER=%%v"
+"%ISCC%" "/DAppVersion=%VER%" "%~dp0FluentSblock.iss"

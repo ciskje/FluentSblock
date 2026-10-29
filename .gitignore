@@ -2,7 +2,7 @@
 bin/
 obj/
 dist/
-installer/*-Setup.exe
+installer/*.exe
 TestResults/
 
 # VS / user files
