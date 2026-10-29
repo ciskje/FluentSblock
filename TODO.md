@@ -126,7 +126,7 @@ Goal: faster, robust scan following the real handle64.exe flow
 
 - [x] View>Timeout submenu (50/100/250/500 ms, checkable, persisted, applied at startup); resx `MenuTimeout` 5 languages
 - [x] `AppSettings.TimeoutMs` with load fix-up (default 100)
-- [x] `AboutText` 0.2.15; `VERSION`+csproj `0.2.15`; green build (smoke N/A: requireAdministrator needs UAC click)
+- [x] `AboutText` 0.2.15; `VERSION`+csproj `0.2.15`; green build (smoke N/A: requireAdministrator needs UAC click); commit + tag `v0.2.15` + push; release with assets; `dist/` realigned
 - [ ] Tag `v0.2.15`
 
 ## 0.2.14 — localized veto types
