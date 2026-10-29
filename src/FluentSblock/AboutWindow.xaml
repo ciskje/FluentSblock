@@ -8,7 +8,7 @@
     <StackPanel Orientation="Horizontal">
       <Image Width="64" Height="64" Margin="0,0,16,0" RenderOptions.BitmapScalingMode="HighQuality">
         <Image.Source>
-          <BitmapImage UriSource="icon.ico" DecodePixelWidth="64"/>
+          <BitmapImage UriSource="Assets/about-icon.png" DecodePixelWidth="64"/>
         </Image.Source>
       </Image>
       <StackPanel VerticalAlignment="Center">

@@ -1,7 +1,7 @@
 # FluentSblock — TODO.md
 
 Activity tracking. Check only what is verified with a green build.
-Current version: `0.2.10` (see `VERSION`).
+Current version: `0.2.11` (see `VERSION`).
 
 ## Version legend
 
@@ -121,6 +121,12 @@ Goal: faster, robust scan following the real handle64.exe flow
 - [ ] Manual test: plug E:, implicit preview check, real eject (confirmation with holders, veto with open file)
 - [ ] Manual test: CSV/TSV export, Help>log, USB insertion → auto-refresh
 - [ ] Tag `v0.2.0`
+
+## 0.2.11 — dedicated About PNG (ICO frame picker doubt)
+
+- [x] `Assets/about-icon.png` (256px source) decoded at exactly 64px, no ICO frame guessing
+- [x] `AboutText` 0.2.11; `VERSION`+csproj `0.2.11`
+- [ ] Tag `v0.2.11`
 
 ## 0.2.10 — sharp About icon
 
