@@ -133,6 +133,7 @@ Goal: faster, robust scan following the real handle64.exe flow
 - [x] Golden test sets `QueryNameTimeoutMs=2000` (save/restore) against AV/load flakes; app default stays 100 ms (250/500 from the Timeout menu)
 - [x] Manual test: starts elevated (UAC at launch); Admin→User stays non-elevated with working drag &amp; drop; User→Admin re-elevates; UAC denied at launch continues as User
 - [x] Tag `v0.2.16`
+- [x] Release v0.2.16 (Latest): `dist/` realigned (exe+setup-0.2.16+msix+README+VERSION.txt), GitHub release with 3 assets
 
 ## 0.2.15 — configurable handle timeout UI
 
