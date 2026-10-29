@@ -122,15 +122,10 @@ Prohibited: no SYS/driver writes, no handle closing, no `Services` keys, no netw
 
 ## 9. Mandatory agent workflow
 
-- Slow NAS: **never** build/restore on `Z:`. Sources on NAS, **all generated files on SSD**:
-  ```
-  dotnet build src/FluentSblock/FluentSblock.csproj `
-    --artifacts-path C:/Temp/opencode/FluentSblock-artifacts `
-    -c Debug
-  ```
-  `NUGET_PACKAGES` stays default (`C:\Users\...\nuget\packages` on SSD). Never commit `bin/obj`.
+- Build/output paths: machine policy (no NAS builds, all generated files on SSD
+  temp, smoke tests only from SSD). Never commit `bin/obj`.
 - Minimum before saying "done": green `dotnet build` + green `dotnet test src/FluentSblock.Tests` + screenshot/file list + `VERSION` matching csproj.
-- Release in `dist/`: `dotnet publish src/FluentSblock/FluentSblock.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:DebugType=none -p:DebugSymbols=false --artifacts-path C:/Temp/opencode/FluentSblock-publish`, smoke-test the exe on SSD, then copy exe + `VERSION.txt` + `README.txt` into `dist/` and clean the temp.
+- Release in `dist/`: `dotnet publish src/FluentSblock/FluentSblock.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:DebugType=none -p:DebugSymbols=false --artifacts-path C:/Temp/opencode/FluentSblock-publish`, smoke-test the exe (SSD only, machine policy), then copy exe + `VERSION.txt` + `README.txt` into `dist/` and clean the temp.
 - Releases: every `dist/` publish also publishes the GitHub release — `gh release create vX.Y.Z --title "FluentSblock X.Y.Z" --notes "..." dist/FluentSblock-Setup-X.Y.Z.exe dist/FluentSblock.msix dist/FluentSblock.exe`, then `gh release edit vX.Y.Z --latest`. Never leave a pushed tag without its release.
 - MSIX: tools from NuGet `Microsoft.Windows.SDK.BuildTools` (makeappx+signtool x64, no admin SDK); private key in `%USERPROFILE%\certs\FluentSblock.pfx` (password in `%USERPROFILE%\certs\password.txt`, NEVER in repo), public in `installer/FluentSblock.cer`; manifest `0.2.0.0`/`CN=FluentSblock`; pack → `signtool sign -fd SHA256` → `signtool verify -pa` (fails until the cert is in TrustedPeople).
 - Don't create files beyond §5 without need. Prefer edits over new files.
