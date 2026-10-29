@@ -34,7 +34,7 @@
   <data name="StatusScanning" xml:space="preserve"><value>Scansione…</value></data>
   <data name="NotElevated" xml:space="preserve"><value>Non elevato — esegui come amministratore per risultati completi</value></data>
   <data name="Elevated" xml:space="preserve"><value>Elevato</value></data>
-  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.11 — elenca i processi con file aperti sui dischi rimovibili.</value></data>
+  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.12 — elenca i processi con file aperti sui dischi rimovibili.</value></data>
   <data name="ScanProgress" xml:space="preserve"><value>Scansione handle {0}/{1}…</value></data>
   <data name="ScanFailedHandles" xml:space="preserve"><value>Impossibile leggere gli handle di sistema (errore 0x{0:X8}). Prova come amministratore.</value></data>
   <data name="LocksFound" xml:space="preserve"><value>{0} handle aperti</value></data>

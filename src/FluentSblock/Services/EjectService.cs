@@ -22,8 +22,9 @@ public static class EjectService
     private const uint DN_DISABLEABLE = 0x400;
     private const uint DN_REMOVABLE = 0x4000;
     private const uint CR_SUCCESS = 0;
-    private const uint CR_REMOVE_VETOED = 0x33;
-    private const uint CM_DRP_DEVICEDESC = 0;
+    private const uint CR_REMOVE_VETOED = 0x17;
+    private const uint CM_DRP_DEVICEDESC = 0x01;
+    private const uint CM_DRP_FRIENDLYNAME = 0x0D;
     private const int MAX_PATH = 260;
     private static readonly IntPtr INVALID_HANDLE_VALUE = new(-1);
 
@@ -264,14 +265,21 @@ public static class EjectService
 
     private static string DescribeDevNode(uint dev)
     {
-        try
+        // Friendly name first, then description, then raw device ID.
+        foreach (uint prop in new[] { CM_DRP_FRIENDLYNAME, CM_DRP_DEVICEDESC })
         {
-            byte[] buf = new byte[2048];
-            uint len = (uint)buf.Length;
-            if (CM_Get_DevNode_Registry_PropertyW(dev, CM_DRP_DEVICEDESC, IntPtr.Zero, buf, ref len, 0) == CR_SUCCESS && len > 2)
-                return Encoding.Unicode.GetString(buf, 0, (int)len).TrimEnd('\0');
+            try
+            {
+                byte[] buf = new byte[2048];
+                uint len = (uint)buf.Length;
+                if (CM_Get_DevNode_Registry_PropertyW(dev, prop, IntPtr.Zero, buf, ref len, 0) == CR_SUCCESS && len > 2)
+                {
+                    string s = Encoding.Unicode.GetString(buf, 0, (int)len).TrimEnd('\0');
+                    if (s.Length > 0) return s;
+                }
+            }
+            catch { }
         }
-        catch { }
         try
         {
             var sb = new StringBuilder(MAX_PATH);
