@@ -34,11 +34,24 @@
   <data name="StatusScanning" xml:space="preserve"><value>Analyse…</value></data>
   <data name="NotElevated" xml:space="preserve"><value>Non élevé — exécutez en administrateur pour des résultats complets</value></data>
   <data name="Elevated" xml:space="preserve"><value>Élevé</value></data>
-  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.13 — liste les processus avec fichiers ouverts sur lecteurs amovibles.</value></data>
+  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.14 — liste les processus avec fichiers ouverts sur lecteurs amovibles.</value></data>
   <data name="ScanProgress" xml:space="preserve"><value>Analyse des handles {0}/{1}…</value></data>
   <data name="ScanFailedHandles" xml:space="preserve"><value>Impossible de lire les handles système (erreur 0x{0:X8}). Essayez en administrateur.</value></data>
   <data name="LocksFound" xml:space="preserve"><value>{0} handles ouverts</value></data>
   <data name="RmFallback" xml:space="preserve"><value>Restart Manager : aucun résultat, analyse des handles…</value></data>
+  <data name="VetoUnknown" xml:space="preserve"><value>Inconnu</value></data>
+  <data name="VetoLegacyDevice" xml:space="preserve"><value>Périphérique hérité</value></data>
+  <data name="VetoPendingClose" xml:space="preserve"><value>Fichiers ouverts</value></data>
+  <data name="VetoWindowsApp" xml:space="preserve"><value>Application</value></data>
+  <data name="VetoWindowsService" xml:space="preserve"><value>Service</value></data>
+  <data name="VetoOutstandingOpen" xml:space="preserve"><value>Handle ouvert</value></data>
+  <data name="VetoDevice" xml:space="preserve"><value>Périphérique</value></data>
+  <data name="VetoDriver" xml:space="preserve"><value>Pilote</value></data>
+  <data name="VetoIllegalDeviceRequest" xml:space="preserve"><value>Requête non valide</value></data>
+  <data name="VetoInsufficientPower" xml:space="preserve"><value>Alimentation insuffisante</value></data>
+  <data name="VetoNonDisableable" xml:space="preserve"><value>Périphérique non désactivable</value></data>
+  <data name="VetoLegacyDriver" xml:space="preserve"><value>Pilote hérité</value></data>
+  <data name="VetoInsufficientRights" xml:space="preserve"><value>Droits insuffisants</value></data>
   <data name="EjectOk" xml:space="preserve"><value>Le périphérique peut être retiré en toute sécurité.</value></data>
   <data name="EjectDialogTitle" xml:space="preserve"><value>Impossible d'éjecter le périphérique</value></data>
   <data name="EjectVetoCause" xml:space="preserve"><value>Bloqué par {0} : {1}.</value></data>

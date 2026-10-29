@@ -388,7 +388,7 @@ public partial class MainWindow : Window
             string cause, remedy;
             if (result.VetoType != null)
             {
-                cause = string.Format(L10n.Get("EjectVetoCause"), result.VetoType, result.VetoName);
+                cause = string.Format(L10n.Get("EjectVetoCause"), VetoDisplayName(result.VetoType), result.VetoName);
                 remedy = L10n.Get("EjectVetoRemedy");
             }
             else
@@ -430,6 +430,14 @@ public partial class MainWindow : Window
             ApplyTexts();
             await RefreshDrivesAsync();
         }
+    }
+
+    private static string VetoDisplayName(string veto)
+    {
+        // Localizes known PNP veto types; unknown ones keep the raw enum name.
+        string key = "Veto" + veto;
+        string s = L10n.Get(key);
+        return s == key ? veto : s;
     }
 
     private void OnShowLogClick(object sender, RoutedEventArgs e)

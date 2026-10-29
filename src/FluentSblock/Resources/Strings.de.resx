@@ -34,11 +34,24 @@
   <data name="StatusScanning" xml:space="preserve"><value>Suche…</value></data>
   <data name="NotElevated" xml:space="preserve"><value>Nicht erhöht — als Administrator ausführen für volle Ergebnisse</value></data>
   <data name="Elevated" xml:space="preserve"><value>Erhöht</value></data>
-  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.13 — listet Prozesse mit geöffneten Dateien auf Wechseldatenträgern.</value></data>
+  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.14 — listet Prozesse mit geöffneten Dateien auf Wechseldatenträgern.</value></data>
   <data name="ScanProgress" xml:space="preserve"><value>Handles werden gescannt {0}/{1}…</value></data>
   <data name="ScanFailedHandles" xml:space="preserve"><value>System-Handles konnten nicht gelesen werden (Fehler 0x{0:X8}). Als Administrator versuchen.</value></data>
   <data name="LocksFound" xml:space="preserve"><value>{0} offene Handles</value></data>
   <data name="RmFallback" xml:space="preserve"><value>Restart Manager: kein Ergebnis, Handles werden gescannt…</value></data>
+  <data name="VetoUnknown" xml:space="preserve"><value>Unbekannt</value></data>
+  <data name="VetoLegacyDevice" xml:space="preserve"><value>Legacy-Gerät</value></data>
+  <data name="VetoPendingClose" xml:space="preserve"><value>Geöffnete Dateien</value></data>
+  <data name="VetoWindowsApp" xml:space="preserve"><value>Anwendung</value></data>
+  <data name="VetoWindowsService" xml:space="preserve"><value>Dienst</value></data>
+  <data name="VetoOutstandingOpen" xml:space="preserve"><value>Geöffnetes Handle</value></data>
+  <data name="VetoDevice" xml:space="preserve"><value>Gerät</value></data>
+  <data name="VetoDriver" xml:space="preserve"><value>Treiber</value></data>
+  <data name="VetoIllegalDeviceRequest" xml:space="preserve"><value>Ungültige Anforderung</value></data>
+  <data name="VetoInsufficientPower" xml:space="preserve"><value>Unzureichende Stromversorgung</value></data>
+  <data name="VetoNonDisableable" xml:space="preserve"><value>Nicht deaktivierbares Gerät</value></data>
+  <data name="VetoLegacyDriver" xml:space="preserve"><value>Legacy-Treiber</value></data>
+  <data name="VetoInsufficientRights" xml:space="preserve"><value>Unzureichende Rechte</value></data>
   <data name="EjectOk" xml:space="preserve"><value>Das Gerät kann sicher entfernt werden.</value></data>
   <data name="EjectDialogTitle" xml:space="preserve"><value>Gerät kann nicht ausgeworfen werden</value></data>
   <data name="EjectVetoCause" xml:space="preserve"><value>Blockiert durch {0}: {1}.</value></data>

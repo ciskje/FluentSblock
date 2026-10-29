@@ -34,11 +34,24 @@
   <data name="StatusScanning" xml:space="preserve"><value>Analizando…</value></data>
   <data name="NotElevated" xml:space="preserve"><value>No elevado — ejecute como administrador para resultados completos</value></data>
   <data name="Elevated" xml:space="preserve"><value>Elevado</value></data>
-  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.13 — lista procesos con archivos abiertos en unidades extraíbles.</value></data>
+  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.14 — lista procesos con archivos abiertos en unidades extraíbles.</value></data>
   <data name="ScanProgress" xml:space="preserve"><value>Examinando identificadores {0}/{1}…</value></data>
   <data name="ScanFailedHandles" xml:space="preserve"><value>No se pudieron leer los identificadores del sistema (error 0x{0:X8}). Pruebe como administrador.</value></data>
   <data name="LocksFound" xml:space="preserve"><value>{0} identificadores abiertos</value></data>
   <data name="RmFallback" xml:space="preserve"><value>Restart Manager: sin resultados, examinando identificadores…</value></data>
+  <data name="VetoUnknown" xml:space="preserve"><value>Desconocido</value></data>
+  <data name="VetoLegacyDevice" xml:space="preserve"><value>Dispositivo heredado</value></data>
+  <data name="VetoPendingClose" xml:space="preserve"><value>Archivos abiertos</value></data>
+  <data name="VetoWindowsApp" xml:space="preserve"><value>Aplicación</value></data>
+  <data name="VetoWindowsService" xml:space="preserve"><value>Servicio</value></data>
+  <data name="VetoOutstandingOpen" xml:space="preserve"><value>Identificador abierto</value></data>
+  <data name="VetoDevice" xml:space="preserve"><value>Dispositivo</value></data>
+  <data name="VetoDriver" xml:space="preserve"><value>Controlador</value></data>
+  <data name="VetoIllegalDeviceRequest" xml:space="preserve"><value>Solicitud no válida</value></data>
+  <data name="VetoInsufficientPower" xml:space="preserve"><value>Energía insuficiente</value></data>
+  <data name="VetoNonDisableable" xml:space="preserve"><value>Dispositivo no deshabilitable</value></data>
+  <data name="VetoLegacyDriver" xml:space="preserve"><value>Controlador heredado</value></data>
+  <data name="VetoInsufficientRights" xml:space="preserve"><value>Derechos insuficientes</value></data>
   <data name="EjectOk" xml:space="preserve"><value>El dispositivo se puede extraer de forma segura.</value></data>
   <data name="EjectDialogTitle" xml:space="preserve"><value>No se puede expulsar el dispositivo</value></data>
   <data name="EjectVetoCause" xml:space="preserve"><value>Bloqueado por {0}: {1}.</value></data>

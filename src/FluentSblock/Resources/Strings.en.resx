@@ -34,11 +34,24 @@
   <data name="StatusScanning" xml:space="preserve"><value>Scanning…</value></data>
   <data name="NotElevated" xml:space="preserve"><value>Not elevated — run as administrator for full results</value></data>
   <data name="Elevated" xml:space="preserve"><value>Elevated</value></data>
-  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.13 — lists processes with open files on removable drives.</value></data>
+  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.14 — lists processes with open files on removable drives.</value></data>
   <data name="ScanProgress" xml:space="preserve"><value>Scanning handles {0}/{1}…</value></data>
   <data name="ScanFailedHandles" xml:space="preserve"><value>Cannot read system handles (error 0x{0:X8}). Try running as administrator.</value></data>
   <data name="LocksFound" xml:space="preserve"><value>{0} open handles</value></data>
   <data name="RmFallback" xml:space="preserve"><value>Restart Manager: no result, scanning handles…</value></data>
+  <data name="VetoUnknown" xml:space="preserve"><value>Unknown</value></data>
+  <data name="VetoLegacyDevice" xml:space="preserve"><value>Legacy device</value></data>
+  <data name="VetoPendingClose" xml:space="preserve"><value>Open files</value></data>
+  <data name="VetoWindowsApp" xml:space="preserve"><value>Application</value></data>
+  <data name="VetoWindowsService" xml:space="preserve"><value>Service</value></data>
+  <data name="VetoOutstandingOpen" xml:space="preserve"><value>Open handle</value></data>
+  <data name="VetoDevice" xml:space="preserve"><value>Device</value></data>
+  <data name="VetoDriver" xml:space="preserve"><value>Driver</value></data>
+  <data name="VetoIllegalDeviceRequest" xml:space="preserve"><value>Illegal request</value></data>
+  <data name="VetoInsufficientPower" xml:space="preserve"><value>Insufficient power</value></data>
+  <data name="VetoNonDisableable" xml:space="preserve"><value>Non-disableable device</value></data>
+  <data name="VetoLegacyDriver" xml:space="preserve"><value>Legacy driver</value></data>
+  <data name="VetoInsufficientRights" xml:space="preserve"><value>Insufficient rights</value></data>
   <data name="EjectOk" xml:space="preserve"><value>Device can be safely removed.</value></data>
   <data name="EjectDialogTitle" xml:space="preserve"><value>Cannot eject device</value></data>
   <data name="EjectVetoCause" xml:space="preserve"><value>Blocked by {0}: {1}.</value></data>
