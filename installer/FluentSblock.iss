@@ -44,4 +44,4 @@ Name: "{group}\FluentSblock"; Filename: "{app}\FluentSblock.exe"
 Name: "{autodesktop}\FluentSblock"; Filename: "{app}\FluentSblock.exe"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\FluentSblock.exe"; Description: "Launch FluentSblock"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\FluentSblock.exe"; Description: "Launch FluentSblock"; Flags: nowait postinstall skipifsilent runascurrentuser

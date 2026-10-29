@@ -1,7 +1,7 @@
 # FluentSblock — TODO.md
 
 Activity tracking. Check only what is verified with a green build.
-Current version: `0.2.8` (see `VERSION`).
+Current version: `0.2.9` (see `VERSION`).
 
 ## Version legend
 
@@ -121,6 +121,12 @@ Goal: faster, robust scan following the real handle64.exe flow
 - [ ] Manual test: plug E:, implicit preview check, real eject (confirmation with holders, veto with open file)
 - [ ] Manual test: CSV/TSV export, Help>log, USB insertion → auto-refresh
 - [ ] Tag `v0.2.0`
+
+## 0.2.9 — postinstall launch with admin token
+
+- [x] `[Run]` gets `runascurrentuser`: Inno sheds elevation on postinstall launch by default, which broke against `requireAdministrator` (error 740)
+- [x] `AboutText` 0.2.9; `VERSION`+csproj `0.2.9`; build verde; commit + tag `v0.2.9` + push
+- [x] `dist/` riallineata (exe+setup-0.2.9+msix); vecchio setup in attesa di sblocco (dialoghi errore aperti)
 
 ## 0.2.8 — always elevated at startup
 
