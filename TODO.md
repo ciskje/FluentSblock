@@ -131,8 +131,8 @@ Goal: faster, robust scan following the real handle64.exe flow
 - [x] Elevated drag &amp; drop attempt via `WM_DROPFILES` + message filter (3 messages) with OLE revoked when elevated; Win11 Explorer still delivers nothing (no `drop files=` in log) → best-effort only, supported path is the Paste button; orange hint + `ElevatedDropHint` resx removed
 - [x] Paste button: fills the file field from a copied file (`CF_HDROP`) or copied path text — clipboard reads work elevated; `Paste/PasteHint/ClipboardEmpty` resx in 5 languages
 - [x] Golden test sets `QueryNameTimeoutMs=2000` (save/restore) against AV/load flakes; app default stays 100 ms (250/500 from the Timeout menu)
-- [ ] Manual test: starts elevated (UAC at launch); Admin→User stays non-elevated with working drag &amp; drop; User→Admin re-elevates; UAC denied at launch continues as User
-- [ ] Tag `v0.2.16`
+- [x] Manual test: starts elevated (UAC at launch); Admin→User stays non-elevated with working drag &amp; drop; User→Admin re-elevates; UAC denied at launch continues as User
+- [x] Tag `v0.2.16`
 
 ## 0.2.15 — configurable handle timeout UI
 
