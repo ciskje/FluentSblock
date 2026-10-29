@@ -67,6 +67,8 @@ public partial class MainWindow : Window
         DriveGroup.Header = L10n.Get("DriveGroup");
         HoldersGroup.Header = L10n.Get("HoldersGroup");
         CheckFileGroup.Header = L10n.Get("CheckFileGroup");
+        DropHint.Text = L10n.Get("ElevatedDropHint");
+        DropHint.Visibility = Visibility.Collapsed;
         PaintStatus("SuccessBrush");
         RefreshBtnText.Text = L10n.Get("MenuRefresh");
         EjectBtnText.Text = L10n.Get("MenuEject");
@@ -326,6 +328,16 @@ public partial class MainWindow : Window
             CheckFileBtn.IsEnabled = true;
         }
     }
+
+    private void OnFilePathGotFocus(object sender, RoutedEventArgs e)
+    {
+        // UIPI blocks the drop itself from reaching us when elevated, so the
+        // field getting focus is the closest observable proxy of a drop attempt.
+        DropHint.Visibility = ThemeService.IsElevated() ? Visibility.Visible : Visibility.Collapsed;
+    }
+
+    private void OnFilePathLostFocus(object sender, RoutedEventArgs e) =>
+        DropHint.Visibility = Visibility.Collapsed;
 
     private void OnBrowseClick(object sender, RoutedEventArgs e)
     {

@@ -1,7 +1,7 @@
 # FluentSblock — TODO.md
 
 Activity tracking. Check only what is verified with a green build.
-Current version: `0.2.2` (see `VERSION`).
+Current version: `0.2.4` (see `VERSION`).
 
 ## Version legend
 
@@ -122,12 +122,17 @@ Goal: faster, robust scan following the real handle64.exe flow
 - [ ] Manual test: CSV/TSV export, Help>log, USB insertion → auto-refresh
 - [ ] Tag `v0.2.0`
 
-## 0.2.3 — stringhe intere in tutte le lingue (review misurata)
+## 0.2.4 — admin-blocked drop warning
 
-- [x] Harness misura reale testi renderizzati (Segoe, default di sistema): trovati clip su Refresh/Eject/Sfoglia/Chi-blocca in de/fr/es
-- [x] Bottoni a `MinWidth` (110/110/100/170) invece di `Width` fissa
-- [x] `AboutText` 0.2.3; `VERSION`+csproj `0.2.3`; build verde
-- [ ] Tag `v0.2.3`
+- [x] Orange line under the field, shown only on file-field focus while elevated (UIPI blocks the drop itself, focus is the proxy); `ElevatedDropHint` resx 5 languages
+- [x] `AboutText` 0.2.4; `VERSION`+csproj `0.2.4`; green build
+- [ ] Tag `v0.2.4`
+
+## 0.2.3 — full-width strings in every language (measured review)
+
+- [x] Harness measures real rendered texts (Segoe, system default): clips found on Refresh/Eject/Browse/Who-locks in de/fr/es
+- [x] Buttons to `MinWidth` (110/110/100/170) instead of fixed `Width`
+- [x] `AboutText` 0.2.3; `VERSION`+csproj `0.2.3`; build verde; commit + tag `v0.2.3`
 
 ## 0.2.2 — full English source/docs/specs
 
@@ -136,6 +141,7 @@ Goal: faster, robust scan following the real handle64.exe flow
 - [x] `run-debug.bat` / `installer/build-setup.bat` messages in English
 - [x] `AboutText` 0.2.2; `VERSION`+csproj `0.2.2`; green build
 - [x] Tag `v0.2.2`; `dist/` (exe+setup+msix+README+VERSION.txt) rebuilt from HEAD
+- [x] Doc check: duplicate 0.2.4 section removed, stale lines fixed, tree completed, `dist/` realigned to 0.2.4 (manifest 0.2.4.0)
 
 ## 0.3.0 — usability (in progress)
 

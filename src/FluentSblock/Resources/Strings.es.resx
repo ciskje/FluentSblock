@@ -34,12 +34,13 @@
   <data name="StatusScanning" xml:space="preserve"><value>Analizando…</value></data>
   <data name="NotElevated" xml:space="preserve"><value>No elevado — ejecute como administrador para resultados completos</value></data>
   <data name="Elevated" xml:space="preserve"><value>Elevado</value></data>
-  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.3 — lista procesos con archivos abiertos en unidades extraíbles.</value></data>
+  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.4 — lista procesos con archivos abiertos en unidades extraíbles.</value></data>
   <data name="ScanProgress" xml:space="preserve"><value>Examinando identificadores {0}/{1}…</value></data>
   <data name="ScanFailedHandles" xml:space="preserve"><value>No se pudieron leer los identificadores del sistema (error 0x{0:X8}). Pruebe como administrador.</value></data>
   <data name="LocksFound" xml:space="preserve"><value>{0} identificadores abiertos</value></data>
   <data name="RmFallback" xml:space="preserve"><value>Restart Manager: sin resultados, examinando identificadores…</value></data>
   <data name="EjectOk" xml:space="preserve"><value>El dispositivo se puede extraer de forma segura.</value></data>
+  <data name="ElevatedDropHint" xml:space="preserve"><value>Ejecutado como administrador: Windows bloquea arrastrar y soltar desde el Explorador — use Examinar o pegue la ruta.</value></data>
   <data name="MenuAutostart" xml:space="preserve"><value>Iniciar con Windows</value></data>
   <data name="FilterHint" xml:space="preserve"><value>Filtrar por proceso o nombre de archivo</value></data>
   <data name="MenuCopyPath" xml:space="preserve"><value>Copiar ruta</value></data>

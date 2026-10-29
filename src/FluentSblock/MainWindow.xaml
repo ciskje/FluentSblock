@@ -142,10 +142,11 @@
         <Grid>
           <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*" MinHeight="120"/>
           </Grid.RowDefinitions>
           <StackPanel Orientation="Horizontal">
-            <TextBox x:Name="FilePathBox" Width="480" Margin="0,0,8,0"/>
+            <TextBox x:Name="FilePathBox" Width="480" Margin="0,0,8,0" GotFocus="OnFilePathGotFocus" LostFocus="OnFilePathLostFocus"/>
             <Button x:Name="BrowseBtn" MinWidth="100" Margin="0,0,8,0" Click="OnBrowseClick">
               <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <ContentControl Content="{StaticResource IconFolder}" Margin="0,0,6,0"/>
@@ -171,7 +172,9 @@
               </StackPanel>
             </Button>
           </StackPanel>
-          <DataGrid x:Name="FileHoldersGrid" Grid.Row="1" Margin="0,8,0,0">
+          <TextBlock x:Name="DropHint" Grid.Row="1" Margin="0,6,0,0" TextWrapping="Wrap"
+                     FontStyle="Italic" Foreground="{StaticResource WarningBrush}" Visibility="Collapsed"/>
+          <DataGrid x:Name="FileHoldersGrid" Grid.Row="2" Margin="0,8,0,0">
             <DataGrid.Columns>
               <DataGridTextColumn Header="Process" Binding="{Binding ProcessName}" Width="150"/>
               <DataGridTextColumn Header="PID" Binding="{Binding Pid}" Width="70"/>

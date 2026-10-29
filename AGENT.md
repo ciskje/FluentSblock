@@ -5,7 +5,7 @@ Specs for coding agents. Source of truth for purpose, architecture, UI, versioni
 ## 1. Identity
 
 - Name: `FluentSblock` (working title: "who is locking the USB?")
-- Current version: `0.2.2` — see `VERSION` (single-line `X.Y.Z`).
+- Current version: `0.2.4` — see `VERSION` (single-line `X.Y.Z`).
 - Repo/dir: `Z:\Lavorazioni\2026\AI\FluentSblock` (slow NAS).
 - Stack v0.1: **C# .NET 8 WPF** (no WinUI3 packaging) with manual Fluent 2 styling.
   Reason: builds with only SDK 8.0.425 installed, no extra workloads, single testable exe.
@@ -42,8 +42,8 @@ MenuBar: File | View | ?/Help  (File>Refresh,Eject,Export CSV/TSV,Exit; View>The
 Toolbar: [Drive ComboBox] [Refresh F5] [Eject] | Theme | Lang — icon+text buttons, menu icons, folder icon on drives
 Split:
   Left: ListView of removable drives (letter, label) — empty state: "No removable drives"
-  Right: DataGrid of lock holders (Process, PID, User, Handle, Access, File, sortable) — empty state: "No locks"
-Bottom card: "Check file" — path TextBox (typable, drag&drop from Explorer) + [Browse...] + [Who is locking it?] + results; draggable splitter with results area
+  Right: DataGrid of lock holders (Process, PID, User, Handle, Access, File, sortable, filter box, row menu) — empty state: "No locks"
+Bottom card: "Check file" — path TextBox (typable, drag&drop from Explorer) + [Browse...] + [Who is locking it?] + results + orange admin-drop hint; draggable splitter with results area
 StatusBar: scan state, handle count, "Run as administrator" when not elevated, version
 ```
 
@@ -52,13 +52,17 @@ Responsive: min 800x500, 2-column `NavigationView`-like layout collapsing to 1 u
 ## 5. Architecture / files
 
 ```
-VERSION                         # "0.2.2"
+VERSION                         # "0.2.4"
+run-debug.bat                   # Debug launcher (asks UAC when not elevated)
+README.md                       # GitHub front page (screenshot in docs/)
+LICENSE.txt                     # MIT © 2026 Francesco Ferrara
+docs/screenshot.png             # main window screenshot for README
 dist/                           # release: Setup.exe + msix + exe + VERSION.txt + README.txt
 installer/                      # FluentSblock.iss (per-user Inno) + build-setup.bat + FluentSblock.cer (public)
 AGENT.md                        # this file
 TODO.md                         # activity tracking
 src/FluentSblock/
-  FluentSblock.csproj           # net8.0-windows, UseWPF, x64, Version 0.2.2
+  FluentSblock.csproj           # net8.0-windows, UseWPF, x64, Version 0.2.4
 src/FluentSblock.Tests/
   FluentSblock.Tests.csproj     # xUnit golden: locked fixture vs handle64 -v
   App.xaml[.cs]                 # theme, language, DWM Mica
@@ -73,7 +77,8 @@ src/FluentSblock.Tests/
     Log.cs                      # append-only diagnostic log in %TEMP%
     AppSettings.cs              # theme/language/columns in %APPDATA% (JSON, never throws)
     EjectService.cs             # CM_Request_Device_EjectW bottom-up + localized veto + PreviewEjectTarget
-  Themes/FluentTokens.xaml      # corner radius, brushes, TextStyles
+  Themes/FluentTokens.xaml      # corner radius, brushes, TextStyles, vector icons
+  icon.ico                      # blue padlock, transparent bg, 16/32/48/256
   Resources/Strings.{en,fr,it,de,es}.resx  # EFIGS, same keys
 ```
 
@@ -127,6 +132,7 @@ Prohibited: no SYS/driver writes, no handle closing, no `Services` keys, no netw
 - Don't create files beyond §5 without need. Prefer edits over new files.
 - Manual tests: (a) no USB → empty state; (b) USB with file open in Notepad → expected row; (c) file field with locked `C:\...` → same PID; (d) switch language to each EFIGS without crash.
 - Reply language to the user: Italian. Code comments: English, concise.
+- Conversation is Italian, documentation is English: all `.md` files (`AGENT.md`, `TODO.md`, specs, `dist/README.txt`) must be written in English. EFIGS `.resx` translations are product content, not docs.
 
 ## 10. Definition of Done v0.1.1
 
