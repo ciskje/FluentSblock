@@ -1,0 +1,12 @@
+# Normalize everything to LF in the repo; checked-out files keep LF too.
+# This silences core.autocrlf warnings and keeps diffs clean.
+* text=auto eol=lf
+
+# Binaries must never be normalized.
+*.exe binary
+*.msix binary
+*.ico binary
+*.png binary
+*.pfx binary
+*.cer binary
+*.resx text
