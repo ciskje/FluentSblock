@@ -72,7 +72,7 @@
       <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
         <ComboBox x:Name="DriveBox" Width="320" Margin="0,0,8,0"
                   SelectionChanged="OnDriveSelectionChanged"/>
-        <Button x:Name="RefreshBtn" Width="110" Margin="0,0,8,0" Click="OnRefreshClick">
+        <Button x:Name="RefreshBtn" MinWidth="110" Margin="0,0,8,0" Click="OnRefreshClick">
           <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
             <ContentControl Content="{StaticResource IconRefresh}" Margin="0,0,6,0">
               <ContentControl.RenderTransform>
@@ -82,7 +82,7 @@
             <AccessText x:Name="RefreshBtnText" Text="_Refresh" VerticalAlignment="Center"/>
           </StackPanel>
         </Button>
-        <Button x:Name="EjectBtn" Width="110" IsEnabled="False" Click="OnEjectClick">
+        <Button x:Name="EjectBtn" MinWidth="110" IsEnabled="False" Click="OnEjectClick">
           <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
             <ContentControl Content="{StaticResource IconEject}" Margin="0,0,6,0"/>
             <AccessText x:Name="EjectBtnText" Text="_Eject" VerticalAlignment="Center"/>
@@ -146,13 +146,13 @@
           </Grid.RowDefinitions>
           <StackPanel Orientation="Horizontal">
             <TextBox x:Name="FilePathBox" Width="480" Margin="0,0,8,0"/>
-            <Button x:Name="BrowseBtn" Width="100" Margin="0,0,8,0" Click="OnBrowseClick">
+            <Button x:Name="BrowseBtn" MinWidth="100" Margin="0,0,8,0" Click="OnBrowseClick">
               <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <ContentControl Content="{StaticResource IconFolder}" Margin="0,0,6,0"/>
                 <AccessText x:Name="BrowseBtnText" Text="Browse…" VerticalAlignment="Center"/>
               </StackPanel>
             </Button>
-            <Button x:Name="CheckFileBtn" Width="160" Click="OnCheckFileClick">
+            <Button x:Name="CheckFileBtn" MinWidth="170" Click="OnCheckFileClick">
               <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <ContentControl x:Name="CheckFileIcon" Content="{StaticResource IconSearch}" Margin="0,0,6,0"/>
                 <ContentControl x:Name="CheckFileRing" Margin="0,0,6,0" Visibility="Collapsed">

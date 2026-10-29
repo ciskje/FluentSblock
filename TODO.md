@@ -112,7 +112,7 @@ Goal: faster, robust scan following the real handle64.exe flow
 - [x] `QueryNameTimeoutMs` configurable via property (20..5000, default 100); UI in 0.3.0 with persistence
 - [x] Log `%TEMP%/FluentSblock.log` + Help>Show log; `MenuShowLog` resx
 - [x] Harness: populated Access (`0x0012019F`...), C: chain ok, `HasRemovableAncestor(C:)=False`, log written; GUI smoke ok
-- [x] Tag `v0.2.0` on HEAD (annotated); retroactive 0.1.0–0.1.5 tags skipped: single commit, would mislead
+- [x] Tag `v0.2.0` removed per request (only `v0.2.2` kept); retroactive 0.1.0–0.1.5 tags skipped: single commit, would mislead
 - [x] `dist/` realigned to HEAD (re-signed exe+setup+msix)
 - [x] `PreviewEjectTarget` for ejection-free diagnostics; Win32 errors captured immediately (no more masked 0x0)
 - [x] Blue rotating ring in the check-file button during scans (lens still at rest)
@@ -122,13 +122,20 @@ Goal: faster, robust scan following the real handle64.exe flow
 - [ ] Manual test: CSV/TSV export, Help>log, USB insertion → auto-refresh
 - [ ] Tag `v0.2.0`
 
+## 0.2.3 — stringhe intere in tutte le lingue (review misurata)
+
+- [x] Harness misura reale testi renderizzati (Segoe, default di sistema): trovati clip su Refresh/Eject/Sfoglia/Chi-blocca in de/fr/es
+- [x] Bottoni a `MinWidth` (110/110/100/170) invece di `Width` fissa
+- [x] `AboutText` 0.2.3; `VERSION`+csproj `0.2.3`; build verde
+- [ ] Tag `v0.2.3`
+
 ## 0.2.2 — full English source/docs/specs
 
 - [x] `AGENT.md`, `TODO.md` translated to English
 - [x] `dist/LEGGIMI.txt` → `dist/README.txt` (+ `.iss` reference)
 - [x] `run-debug.bat` / `installer/build-setup.bat` messages in English
 - [x] `AboutText` 0.2.2; `VERSION`+csproj `0.2.2`; green build
-- [ ] Tag `v0.2.2`
+- [x] Tag `v0.2.2`; `dist/` (exe+setup+msix+README+VERSION.txt) rebuilt from HEAD
 
 ## 0.3.0 — usability (in progress)
 
