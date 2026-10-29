@@ -29,21 +29,12 @@ Get the latest release from the
 
 Unsigned builds: on first run SmartScreen shows a blue screen → "More info" → "Run anyway".
 
-## Install
-
-Prebuilt files live in [`dist/`](dist):
-
-| File | What |
-|---|---|
-| `FluentSblock-Setup.exe` | Per-user installer (recommended): Start Menu entry, Settings uninstall, no admin, no .NET needed |
-| `FluentSblock.msix` | Signed MSIX package (clean identity). First install the cert: double-click `installer/FluentSblock.cer` → Local Machine (admin) → Trusted People, then open the `.msix` |
-| `FluentSblock.exe` | Single self-contained app (no install, no .NET needed) |
-
-Unsigned builds: on first run SmartScreen shows a blue screen → "More info" → "Run anyway".
-
 > Tip: run as administrator to see all users' processes. As admin, drag & drop
 > from Explorer is blocked by Windows (UIPI) — the app tells you and offers
 > Browse/paste instead.
+
+> Note: there is no `dist/` folder in git (build outputs are gitignored) —
+> every file above comes from the release assets.
 
 ## How it works
 
