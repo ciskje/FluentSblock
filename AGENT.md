@@ -57,6 +57,7 @@ run-debug.bat                   # Debug launcher (asks UAC when not elevated)
 README.md                       # GitHub front page (screenshot in docs/)
 LICENSE.txt                     # MIT © 2026 Francesco Ferrara
 docs/screenshot.png             # main window screenshot for README
+screenshot/                     # original user captures (not cropped)
 dist/                           # release: Setup.exe + msix + exe + VERSION.txt + README.txt
 installer/                      # FluentSblock.iss (per-user Inno) + build-setup.bat + FluentSblock.cer (public)
 AGENT.md                        # this file
