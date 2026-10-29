@@ -126,8 +126,7 @@ Goal: faster, robust scan following the real handle64.exe flow
 
 - [x] `CR_REMOVE_VETOED` is `0x17`, not `0x33` (verified in cfgmgr32.h): vetoes now report the reason instead of a cryptic error
 - [x] `CM_DRP_DEVICEDESC` is `0x01` (+ `FRIENDLYNAME` `0x0D` first): eject messages name the device properly
-- [x] `AboutText` 0.2.12; `VERSION`+csproj `0.2.12`
-- [ ] Tag `v0.2.12`
+- [x] `AboutText` 0.2.12; `VERSION`+csproj `0.2.12`; build verde; commit + tag `v0.2.12` + push; `dist/` riallineata
 
 ## 0.2.11 — dedicated About PNG (ICO frame picker doubt)
 
