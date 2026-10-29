@@ -4,8 +4,8 @@ Specs for coding agents. Source of truth for purpose, architecture, UI, versioni
 
 ## 1. Identity
 
-- Name: `FluentSblock` (working title: "who is locking the USB?")
-- Current version: `0.2.4` — see `VERSION` (single-line `X.Y.Z`).
+- Name: `FluentSblock` (working title: "who holds files open?")
+- Current version: `0.2.5` — see `VERSION` (single-line `X.Y.Z`).
 - Repo/dir: `Z:\Lavorazioni\2026\AI\FluentSblock` (slow NAS).
 - Stack v0.1: **C# .NET 8 WPF** (no WinUI3 packaging) with manual Fluent 2 styling.
   Reason: builds with only SDK 8.0.425 installed, no extra workloads, single testable exe.
@@ -52,7 +52,7 @@ Responsive: min 800x500, 2-column `NavigationView`-like layout collapsing to 1 u
 ## 5. Architecture / files
 
 ```
-VERSION                         # "0.2.4"
+VERSION                         # "0.2.5"
 run-debug.bat                   # Debug launcher (asks UAC when not elevated)
 README.md                       # GitHub front page (screenshot in docs/)
 LICENSE.txt                     # MIT © 2026 Francesco Ferrara
@@ -63,10 +63,11 @@ installer/                      # FluentSblock.iss (per-user Inno) + build-setup
 AGENT.md                        # this file
 TODO.md                         # activity tracking
 src/FluentSblock/
-  FluentSblock.csproj           # net8.0-windows, UseWPF, x64, Version 0.2.4
+  FluentSblock.csproj           # net8.0-windows, UseWPF, x64, Version 0.2.5
 src/FluentSblock.Tests/
   FluentSblock.Tests.csproj     # xUnit golden: locked fixture vs handle64 -v
   App.xaml[.cs]                 # theme, language, DWM Mica
+  AboutWindow.xaml[.cs]         # About dialog with big app icon
   MainWindow.xaml[.cs]          # layout §4, light MVVM code-behind in v0.1
   Models/
     RemovableDrive.cs           # Letter, Label

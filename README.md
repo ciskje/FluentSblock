@@ -1,4 +1,4 @@
-# FluentSblock — who is locking the USB?
+# FluentSblock — who holds files open?
 
 Shows which programs hold open files on removable drives and block safe
 ejection — and who is holding a given file locked.
