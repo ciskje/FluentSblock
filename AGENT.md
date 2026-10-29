@@ -134,7 +134,7 @@ Prohibited: no SYS/driver writes, no handle closing, no `Services` keys, no netw
 
 ## 10. Definition of Done v0.1.1
 
-- [x] Green build with SSD artifacts
+- [x] Green build (machine policy paths)
 - [x] Window opens, lists ejectable drives incl. USB-Fixed (E: verified via harness)
 - [ ] Window opened from `run-debug.bat` shows E: (user manual test)
 - [ ] Refresh shows real holders per volume (verified with open file)
