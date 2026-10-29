@@ -4,7 +4,7 @@
   <resheader name="version"><value>2.0</value></resheader>
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
-  <data name="AppTitle" xml:space="preserve"><value>FluentSblock — ¿quién bloquea el USB?</value></data>
+  <data name="AppTitle" xml:space="preserve"><value>FluentSblock — ¿quién tiene archivos abiertos?</value></data>
   <data name="MenuFile" xml:space="preserve"><value>_Archivo</value></data>
   <data name="MenuView" xml:space="preserve"><value>_Vista</value></data>
   <data name="MenuHelp" xml:space="preserve"><value>_Ayuda</value></data>
@@ -34,7 +34,7 @@
   <data name="StatusScanning" xml:space="preserve"><value>Analizando…</value></data>
   <data name="NotElevated" xml:space="preserve"><value>No elevado — ejecute como administrador para resultados completos</value></data>
   <data name="Elevated" xml:space="preserve"><value>Elevado</value></data>
-  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.4 — lista procesos con archivos abiertos en unidades extraíbles.</value></data>
+  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.5 — lista procesos con archivos abiertos en unidades extraíbles.</value></data>
   <data name="ScanProgress" xml:space="preserve"><value>Examinando identificadores {0}/{1}…</value></data>
   <data name="ScanFailedHandles" xml:space="preserve"><value>No se pudieron leer los identificadores del sistema (error 0x{0:X8}). Pruebe como administrador.</value></data>
   <data name="LocksFound" xml:space="preserve"><value>{0} identificadores abiertos</value></data>

@@ -489,5 +489,5 @@ public partial class MainWindow : Window
     }
 
     private void OnAboutClick(object sender, RoutedEventArgs e)
-        => MessageBox.Show(this, L10n.Get("AboutText"), L10n.Get("AppTitle"));
+        => new AboutWindow { Owner = this }.ShowDialog();
 }

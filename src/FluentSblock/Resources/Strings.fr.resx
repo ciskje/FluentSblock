@@ -4,7 +4,7 @@
   <resheader name="version"><value>2.0</value></resheader>
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
-  <data name="AppTitle" xml:space="preserve"><value>FluentSblock — qui bloque l'USB ?</value></data>
+  <data name="AppTitle" xml:space="preserve"><value>FluentSblock — qui garde des fichiers ouverts ?</value></data>
   <data name="MenuFile" xml:space="preserve"><value>_Fichier</value></data>
   <data name="MenuView" xml:space="preserve"><value>_Affichage</value></data>
   <data name="MenuHelp" xml:space="preserve"><value>_Aide</value></data>
@@ -34,7 +34,7 @@
   <data name="StatusScanning" xml:space="preserve"><value>Analyse…</value></data>
   <data name="NotElevated" xml:space="preserve"><value>Non élevé — exécutez en administrateur pour des résultats complets</value></data>
   <data name="Elevated" xml:space="preserve"><value>Élevé</value></data>
-  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.4 — liste les processus avec fichiers ouverts sur lecteurs amovibles.</value></data>
+  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.5 — liste les processus avec fichiers ouverts sur lecteurs amovibles.</value></data>
   <data name="ScanProgress" xml:space="preserve"><value>Analyse des handles {0}/{1}…</value></data>
   <data name="ScanFailedHandles" xml:space="preserve"><value>Impossible de lire les handles système (erreur 0x{0:X8}). Essayez en administrateur.</value></data>
   <data name="LocksFound" xml:space="preserve"><value>{0} handles ouverts</value></data>
