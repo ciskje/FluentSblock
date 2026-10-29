@@ -1,7 +1,7 @@
 # FluentSblock — TODO.md
 
 Activity tracking. Check only what is verified with a green build.
-Current version: `0.2.7` (see `VERSION`).
+Current version: `0.2.8` (see `VERSION`).
 
 ## Version legend
 
@@ -121,6 +121,11 @@ Goal: faster, robust scan following the real handle64.exe flow
 - [ ] Manual test: plug E:, implicit preview check, real eject (confirmation with holders, veto with open file)
 - [ ] Manual test: CSV/TSV export, Help>log, USB insertion → auto-refresh
 - [ ] Tag `v0.2.0`
+
+## 0.2.8 — always elevated at startup
+
+- [x] `app.manifest` with `requireAdministrator` embedded via `ApplicationManifest` (every launch asks UAC)
+- [x] `AboutText` 0.2.8; `VERSION`+csproj `0.2.8`; green build; manifest verified in exe; `dist/` realigned; commit + tag `v0.2.8` + push
 
 ## 0.2.7 — Program Files default install
 
