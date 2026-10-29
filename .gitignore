@@ -1,9 +1,11 @@
-# Build outputs (rebuild via AGENT.md §9; Debug via run-debug.bat)
+# Build outputs (rebuild via machine policy; Debug via run-debug.bat)
 bin/
 obj/
 dist/
 installer/*.exe
 TestResults/
+# Agent specs live in the global config, never in repos
+AGENT.md
 
 # VS / user files
 .vs/
