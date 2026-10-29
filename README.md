@@ -23,7 +23,7 @@ Get the latest release from the
 
 | File | What |
 |---|---|
-| `FluentSblock-Setup-0.2.6.exe` | Per-user installer (recommended): Start Menu entry, Settings uninstall, no admin, no .NET needed |
+| `FluentSblock-Setup-X.Y.Z.exe` | Machine installer into Program Files (needs admin): Start Menu entry, Settings uninstall, no .NET needed |
 | `FluentSblock.msix` | Signed MSIX package (clean identity). First install the cert: double-click `installer/FluentSblock.cer` → Local Machine (admin) → Trusted People, then open the `.msix` |
 | `FluentSblock.exe` | Single self-contained app (no install, no .NET needed) |
 
