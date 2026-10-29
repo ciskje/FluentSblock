@@ -125,8 +125,7 @@ Goal: faster, robust scan following the real handle64.exe flow
 ## 0.2.4 — admin-blocked drop warning
 
 - [x] Orange line under the field, shown only on file-field focus while elevated (UIPI blocks the drop itself, focus is the proxy); `ElevatedDropHint` resx 5 languages
-- [x] `AboutText` 0.2.4; `VERSION`+csproj `0.2.4`; green build
-- [ ] Tag `v0.2.4`
+- [x] `AboutText` 0.2.4; `VERSION`+csproj `0.2.4`; green build; commit + tag `v0.2.4` + GitHub push
 
 ## 0.2.3 — full-width strings in every language (measured review)
 
