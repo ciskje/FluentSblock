@@ -126,8 +126,7 @@ Goal: faster, robust scan following the real handle64.exe flow
 
 - [x] `OutputBaseFilename=FluentSblock-Setup-{#AppVersion}` + `VersionInfoVersion={#AppVersion}.0` (no more hardcoded versions in `.iss`)
 - [x] `build-setup.bat` reads `VERSION` and passes `/DAppVersion=` (single source of truth)
-- [x] `AboutText` 0.2.6; `VERSION`+csproj `0.2.6`
-- [ ] Tag `v0.2.6`
+- [x] `AboutText` 0.2.6; `VERSION`+csproj `0.2.6`; build verde; commit + tag `v0.2.6` + push
 
 ## 0.2.5 — honest tagline + About dialog with big icon
 
