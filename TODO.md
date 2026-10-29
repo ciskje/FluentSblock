@@ -125,8 +125,7 @@ Goal: faster, robust scan following the real handle64.exe flow
 ## 0.2.10 — sharp About icon
 
 - [x] About icon decodes the 256px frame at exactly 64px (`DecodePixelWidth`) + `HighQuality` scaling (was: wrong frame upscaled, blurry)
-- [x] `AboutText` 0.2.10; `VERSION`+csproj `0.2.10`
-- [ ] Tag `v0.2.10`
+- [x] `AboutText` 0.2.10; `VERSION`+csproj `0.2.10`; build verde; commit + tag `v0.2.10` + push; `dist/` riallineata
 
 ## 0.2.9 — postinstall launch with admin token
 
