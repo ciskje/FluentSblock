@@ -12,6 +12,8 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         // --lang=fr override for testing EFIGS.
+        // --user (set by the Admin→User switch) opts out of auto-elevation.
+        bool stayUser = false;
         foreach (var arg in e.Args)
         {
             if (arg.StartsWith("--lang=", StringComparison.OrdinalIgnoreCase))
@@ -20,6 +22,23 @@ public partial class App : Application
                 try { CultureInfo.CurrentUICulture = new CultureInfo(lang); StartupLang = lang; }
                 catch (CultureNotFoundException) { /* fallback to OS */ }
             }
+            else if (arg.Equals("--user", StringComparison.OrdinalIgnoreCase))
+            {
+                stayUser = true;
+            }
+        }
+
+        // Default to Admin: relaunch elevated via UAC unless opted out.
+        // A requireAdministrator manifest cannot be used instead: it would
+        // re-elevate every launch, making "Switch to User" impossible.
+        if (!stayUser && !Services.ThemeService.IsElevated())
+        {
+            if (Services.ElevationService.RestartAsAdmin())
+            {
+                Shutdown();
+                return;
+            }
+            // UAC denied: continue as standard user.
         }
 
         try { SetCurrentProcessExplicitAppUserModelId("FluentSblock"); }

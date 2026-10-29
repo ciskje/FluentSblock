@@ -1,7 +1,7 @@
 # FluentSblock — TODO.md
 
 Activity tracking. Check only what is verified with a green build.
-Current version: `0.2.15` (see `VERSION`).
+Current version: `0.2.16` (see `VERSION`).
 
 ## Version legend
 
@@ -121,6 +121,18 @@ Goal: faster, robust scan following the real handle64.exe flow
 - [ ] Manual test: plug E:, implicit preview check, real eject (confirmation with holders, veto with open file)
 - [ ] Manual test: CSV/TSV export, Help>log, USB insertion → auto-refresh
 - [ ] Tag `v0.2.0`
+
+## 0.2.16 — Admin/User switch button
+
+- [x] `app.manifest` is `asInvoker` + auto-elevate at startup: starts as Admin by default (UAC at launch); a `requireAdministrator` manifest would re-elevate every launch and make "Switch to User" impossible
+- [x] Toolbar button + File menu item with shield icon: restart as User via duplicated Explorer token (`CreateProcessWithTokenW`), `runas /trustlevel` fallback with child-appearance guard (internal `--user` flag opts out of auto-elevation, e.g. for drag &amp; drop) or back as Admin via UAC (`runas`); `ElevationService` preserves CLI args; `SwitchToAdmin/SwitchToUser/RoleSwitchCancelled` resx in 5 languages
+- [x] `run-debug.bat` plain launch (UAC prompt comes from auto-elevation)
+- [x] `AboutText` 0.2.16; `VERSION`+csproj `0.2.16`; green build
+- [x] Elevated drag &amp; drop attempt via `WM_DROPFILES` + message filter (3 messages) with OLE revoked when elevated; Win11 Explorer still delivers nothing (no `drop files=` in log) → best-effort only, supported path is the Paste button; orange hint + `ElevatedDropHint` resx removed
+- [x] Paste button: fills the file field from a copied file (`CF_HDROP`) or copied path text — clipboard reads work elevated; `Paste/PasteHint/ClipboardEmpty` resx in 5 languages
+- [x] Golden test sets `QueryNameTimeoutMs=2000` (save/restore) against AV/load flakes; app default stays 100 ms (250/500 from the Timeout menu)
+- [ ] Manual test: starts elevated (UAC at launch); Admin→User stays non-elevated with working drag &amp; drop; User→Admin re-elevates; UAC denied at launch continues as User
+- [ ] Tag `v0.2.16`
 
 ## 0.2.15 — configurable handle timeout UI
 

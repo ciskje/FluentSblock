@@ -6,14 +6,4 @@ if not exist "%EXE%" (
   echo Build first: dotnet build src\FluentSblock\FluentSblock.csproj --artifacts-path C:/Temp/opencode/FluentSblock-artifacts -c Debug
   exit /b 1
 )
-net session >nul 2>&1
-if %errorlevel%==0 (
-  start "" "%EXE%" %*
-) else (
-  echo [FluentSblock] Richiesta elevazione UAC...
-  if "%~1"=="" (
-    powershell -NoProfile -Command "Start-Process '%EXE%' -Verb RunAs"
-  ) else (
-    powershell -NoProfile -Command "Start-Process '%EXE%' -ArgumentList '%*' -Verb RunAs"
-  )
-)
+start "" "%EXE%" %*

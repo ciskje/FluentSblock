@@ -22,6 +22,10 @@ public sealed class HandleFixtureTests
         string fixture = Path.Combine(Path.GetTempPath(), $"fluentSblock-golden-{Guid.NewGuid():N}.tmp");
         await File.WriteAllTextAsync(fixture, "golden");
         using var locked = new FileStream(fixture, FileMode.Open, FileAccess.ReadWrite, FileShare.Read);
+        // Name queries can stall past the 100 ms app default under AV/load
+        // (fresh temp file); give the test headroom, restore afterwards.
+        int prevTimeout = HandleEnumerator.QueryNameTimeoutMs;
+        HandleEnumerator.QueryNameTimeoutMs = 2000;
         try
         {
             using var cts = new CancellationTokenSource(TimeSpan.FromMinutes(4));
@@ -54,6 +58,7 @@ public sealed class HandleFixtureTests
         }
         finally
         {
+            HandleEnumerator.QueryNameTimeoutMs = prevTimeout;
             locked.Dispose();
             File.Delete(fixture);
         }

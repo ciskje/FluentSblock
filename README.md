@@ -9,7 +9,7 @@ ejection — and who is holding a given file locked.
 
 - **Removable drives**: lists processes with open files per volume (process, PID, user, handle, access mask, path), including USB-Fixed SSDs in enclosures.
 - **Safe eject** via `CM_Request_Device_EjectW`, with confirmation when holders exist and localized veto/error messages.
-- **Check a file**: paste a path (or drag & drop a file/folder, or Browse for either) to find who holds it — UNC paths and mapped drives included.
+- **Check a file**: paste a path (or drag & drop a file/folder, Browse, or the Paste button for copied files/paths) to find who holds it — UNC paths and mapped drives included.
 - **Holders filter**, copy-path / open-location row menu, CSV/TSV export.
 - Read-only by design: no handle closing, no kernel driver, no network.
 - UI: C# .NET 8 WPF, manual Fluent 2 styling, Mica backdrop, system accent,
@@ -29,9 +29,10 @@ Get the latest release from the
 
 Unsigned builds: on first run SmartScreen shows a blue screen → "More info" → "Run anyway".
 
-> Tip: run as administrator to see all users' processes. As admin, drag & drop
-> from Explorer is blocked by Windows (UIPI) — the app tells you and offers
-> Browse/paste instead.
+> Tip: the app elevates at launch (UAC) to see all users' processes. To check a
+> file, drag & drop it as standard user — or, elevated included, use the Paste
+> button with a copied file/path, Browse, or Ctrl+V. The Admin/User button
+> restarts as standard user and back.
 
 > Note: there is no `dist/` folder in git (build outputs are gitignored) —
 > every file above comes from the release assets.

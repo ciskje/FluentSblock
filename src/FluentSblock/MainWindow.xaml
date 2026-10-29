@@ -14,6 +14,9 @@
         <MenuItem x:Name="MiEject" Header="_Eject" Click="OnEjectClick" IsEnabled="False">
           <MenuItem.Icon><ContentControl Content="{StaticResource IconEject}"/></MenuItem.Icon>
         </MenuItem>
+        <MenuItem x:Name="MiSwitchRole" Header="Switch to Admin" Click="OnSwitchRoleClick">
+          <MenuItem.Icon><ContentControl Content="{StaticResource IconShield}"/></MenuItem.Icon>
+        </MenuItem>
         <MenuItem x:Name="MiExportCsv" Header="Export CSV" Click="OnExportCsvClick"/>
         <MenuItem x:Name="MiExportTsv" Header="Export TSV" Click="OnExportTsvClick"/>
         <Separator/>
@@ -94,6 +97,12 @@
             <AccessText x:Name="EjectBtnText" Text="_Eject" VerticalAlignment="Center"/>
           </StackPanel>
         </Button>
+        <Button x:Name="RoleBtn" MinWidth="150" Margin="8,0,0,0" Click="OnSwitchRoleClick">
+          <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <ContentControl Content="{StaticResource IconShield}" Margin="0,0,6,0"/>
+            <AccessText x:Name="RoleBtnText" Text="Switch to Admin" VerticalAlignment="Center"/>
+          </StackPanel>
+        </Button>
         <TextBlock x:Name="ProgressText" VerticalAlignment="Center" Margin="12,0,0,0" Opacity="0.7" Foreground="{StaticResource AccentBrush}"/>
       </StackPanel>
 
@@ -148,15 +157,20 @@
         <Grid>
           <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*" MinHeight="120"/>
           </Grid.RowDefinitions>
           <StackPanel Orientation="Horizontal">
-            <TextBox x:Name="FilePathBox" Width="480" Margin="0,0,8,0" GotFocus="OnFilePathGotFocus" LostFocus="OnFilePathLostFocus"/>
+            <TextBox x:Name="FilePathBox" Width="400" Margin="0,0,8,0"/>
             <Button x:Name="BrowseBtn" MinWidth="100" Margin="0,0,8,0" Click="OnBrowseClick">
               <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <ContentControl Content="{StaticResource IconFolder}" Margin="0,0,6,0"/>
                 <AccessText x:Name="BrowseBtnText" Text="Browse…" VerticalAlignment="Center"/>
+              </StackPanel>
+            </Button>
+            <Button x:Name="PasteBtn" MinWidth="100" Margin="0,0,8,0" Click="OnPasteClick">
+              <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <ContentControl Content="{StaticResource IconPaste}" Margin="0,0,6,0"/>
+                <AccessText x:Name="PasteBtnText" Text="Paste" VerticalAlignment="Center"/>
               </StackPanel>
             </Button>
             <Button x:Name="CheckFileBtn" MinWidth="170" Click="OnCheckFileClick">
@@ -178,9 +192,7 @@
               </StackPanel>
             </Button>
           </StackPanel>
-          <TextBlock x:Name="DropHint" Grid.Row="1" Margin="0,6,0,0" TextWrapping="Wrap"
-                     FontStyle="Italic" Foreground="{StaticResource WarningBrush}" Visibility="Collapsed"/>
-          <DataGrid x:Name="FileHoldersGrid" Grid.Row="2" Margin="0,8,0,0">
+          <DataGrid x:Name="FileHoldersGrid" Grid.Row="1" Margin="0,8,0,0">
             <DataGrid.Columns>
               <DataGridTextColumn Header="Process" Binding="{Binding ProcessName}" Width="150"/>
               <DataGridTextColumn Header="PID" Binding="{Binding Pid}" Width="70"/>

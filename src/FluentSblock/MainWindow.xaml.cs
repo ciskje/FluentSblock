@@ -1,5 +1,7 @@
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Runtime.InteropServices;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -22,6 +24,11 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        // Elevated: OLE DnD is UIPI-blocked AND its registration shadows the
+        // WM_DROPFILES fallback (Explorer picks OLE and never sends the
+        // message), so revoke it and rely on WM_DROPFILES only.
+        // Non-elevated keeps rich OLE drag & drop (+ WM_DROPFILES + dedupe).
+        AllowDrop = !ThemeService.IsElevated();
         if (!string.IsNullOrEmpty(_settings.Lang) && string.IsNullOrEmpty(App.StartupLang))
             L10n.SetLanguage(_settings.Lang);
         ThemeService.ApplyMica(this);
@@ -70,12 +77,12 @@ public partial class MainWindow : Window
         DriveGroup.Header = L10n.Get("DriveGroup");
         HoldersGroup.Header = L10n.Get("HoldersGroup");
         CheckFileGroup.Header = L10n.Get("CheckFileGroup");
-        DropHint.Text = L10n.Get("ElevatedDropHint");
-        DropHint.Visibility = Visibility.Collapsed;
         PaintStatus("SuccessBrush");
         RefreshBtnText.Text = L10n.Get("MenuRefresh");
         EjectBtnText.Text = L10n.Get("MenuEject");
         BrowseBtnText.Text = L10n.Get("Browse");
+        PasteBtnText.Text = L10n.Get("Paste");
+        PasteBtn.ToolTip = L10n.Get("PasteHint");
         CheckFileBtnText.Text = L10n.Get("CheckFileButton");
         FilePathBox.ToolTip = L10n.Get("CheckFileHint");
         ColProcess.Header = L10n.Get("ColProcess");
@@ -88,7 +95,7 @@ public partial class MainWindow : Window
         MiCopyPath.Header = L10n.Get("MenuCopyPath");
         MiOpenLocation.Header = L10n.Get("MenuOpenLocation");
         StatusText.Text = L10n.Get("StatusReady");
-        AdminText.Text = ThemeService.IsElevated() ? L10n.Get("Elevated") : L10n.Get("NotElevated");
+        UpdateElevationUI();
         try { VersionText.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "?"; }
         catch { VersionText.Text = "?"; }
         if (_drives.Count == 0 && DriveList.Items.Count == 0)
@@ -123,7 +130,21 @@ public partial class MainWindow : Window
     {
         base.OnSourceInitialized(e);
         if (PresentationSource.FromVisual(this) is System.Windows.Interop.HwndSource src)
+        {
             src.AddHook(WndProc);
+            try
+            {
+                // Classic file drops cross the UIPI boundary (OLE DnD does
+                // not), but only with all three file-drop messages allowed:
+                // WM_DROPFILES alone is not sufficient.
+                DragAcceptFiles(src.Handle, true);
+                bool dropOk = ChangeWindowMessageFilterEx(src.Handle, WM_DROPFILES, MSGFLT_ALLOW, IntPtr.Zero);
+                bool copyDataOk = ChangeWindowMessageFilterEx(src.Handle, WM_COPYDATA, MSGFLT_ALLOW, IntPtr.Zero);
+                bool copyGlobalOk = ChangeWindowMessageFilterEx(src.Handle, WM_COPYGLOBALDATA, MSGFLT_ALLOW, IntPtr.Zero);
+                Log.Info($"dropfilter elevated={ThemeService.IsElevated()} ole={AllowDrop} dropfiles={dropOk} copydata={copyDataOk} copyglobal={copyGlobalOk}");
+            }
+            catch { /* drag & drop stays OLE-only */ }
+        }
     }
 
     private bool _autoRefreshing;
@@ -135,6 +156,12 @@ public partial class MainWindow : Window
         {
             _autoRefreshing = true;
             _ = AutoRefreshAsync();
+        }
+        else if (msg == WM_DROPFILES)
+        {
+            try { HandleWmDropFiles(wParam); }
+            catch { }
+            handled = true;
         }
         return IntPtr.Zero;
     }
@@ -295,12 +322,69 @@ public partial class MainWindow : Window
 
     private void OnFileDrop(object sender, DragEventArgs e)
     {
-        if (e.Data.GetData(DataFormats.FileDrop) is string[] paths && paths.Length > 0)
+        if (e.Data.GetData(DataFormats.FileDrop) is string[] paths && paths.Length > 0
+            && NoteDrop(paths))
         {
             FilePathBox.Text = paths[0];
             OnCheckFileClick(sender, new RoutedEventArgs());
         }
     }
+
+    // Non-elevated drops arrive twice (OLE DnD + WM_DROPFILES); elevated
+    // only via WM_DROPFILES. Whoever arrives second with the same files
+    // inside a short window is a duplicate.
+    private (string Key, DateTime When) _lastDrop;
+
+    private bool NoteDrop(IEnumerable<string> paths)
+    {
+        string key = string.Join("|", paths);
+        var now = DateTime.UtcNow;
+        if (_lastDrop.Key == key && (now - _lastDrop.When) < TimeSpan.FromSeconds(2))
+            return false;
+        _lastDrop = (key, now);
+        return true;
+    }
+
+    private const int WM_DROPFILES = 0x0233;
+    private const int WM_COPYDATA = 0x004A;
+    private const int WM_COPYGLOBALDATA = 0x0049;
+    private const int MSGFLT_ALLOW = 1;
+
+    private void HandleWmDropFiles(IntPtr hDrop)
+    {
+        var paths = new List<string>();
+        try
+        {
+            uint n = DragQueryFileW(hDrop, 0xFFFFFFFF, null, 0);
+            var sb = new StringBuilder(32768);
+            for (uint i = 0; i < n && i < 64; i++)
+            {
+                sb.Clear();
+                if (DragQueryFileW(hDrop, i, sb, (uint)sb.Capacity) > 0)
+                    paths.Add(sb.ToString());
+            }
+        }
+        finally { DragFinish(hDrop); }
+        // Only paths are read from the drop: nothing is ever executed.
+        Log.Info($"drop files={paths.Count} first={(paths.Count > 0 ? paths[0] : "-")}");
+        if (paths.Count > 0 && NoteDrop(paths))
+        {
+            FilePathBox.Text = paths[0];
+            OnCheckFileClick(this, new RoutedEventArgs());
+        }
+    }
+
+    [DllImport("shell32.dll")]
+    private static extern void DragAcceptFiles(IntPtr hWnd, bool fAccept);
+
+    [DllImport("shell32.dll", CharSet = CharSet.Unicode)]
+    private static extern uint DragQueryFileW(IntPtr hDrop, uint iFile, StringBuilder? pszFile, uint cch);
+
+    [DllImport("shell32.dll")]
+    private static extern void DragFinish(IntPtr hDrop);
+
+    [DllImport("user32.dll")]
+    private static extern bool ChangeWindowMessageFilterEx(IntPtr hWnd, uint message, uint action, IntPtr pChangeFilterStruct);
 
     private async void OnCheckFileClick(object sender, RoutedEventArgs e)
     {
@@ -332,16 +416,6 @@ public partial class MainWindow : Window
         }
     }
 
-    private void OnFilePathGotFocus(object sender, RoutedEventArgs e)
-    {
-        // UIPI blocks the drop itself from reaching us when elevated, so the
-        // field getting focus is the closest observable proxy of a drop attempt.
-        DropHint.Visibility = ThemeService.IsElevated() ? Visibility.Visible : Visibility.Collapsed;
-    }
-
-    private void OnFilePathLostFocus(object sender, RoutedEventArgs e) =>
-        DropHint.Visibility = Visibility.Collapsed;
-
     private void OnBrowseClick(object sender, RoutedEventArgs e)
     {
         // One dialog for files AND folders: with existence checks off,
@@ -361,6 +435,37 @@ public partial class MainWindow : Window
         catch { }
         if (dlg.ShowDialog(this) == true)
             FilePathBox.Text = dlg.FileName;
+    }
+
+    private void OnPasteClick(object sender, RoutedEventArgs e)
+    {
+        // Clipboard reads work across integrity levels (paste-up is allowed),
+        // so this covers copied files AND copied paths, elevated or not.
+        try
+        {
+            if (Clipboard.ContainsFileDropList())
+            {
+                var files = Clipboard.GetFileDropList();
+                if (files.Count > 0)
+                {
+                    FilePathBox.Text = files[0];
+                    OnCheckFileClick(sender, new RoutedEventArgs());
+                    return;
+                }
+            }
+            if (Clipboard.ContainsText())
+            {
+                string t = Clipboard.GetText().Trim().Trim('"');
+                if (!string.IsNullOrEmpty(t))
+                {
+                    FilePathBox.Text = t;
+                    OnCheckFileClick(sender, new RoutedEventArgs());
+                    return;
+                }
+            }
+            ProgressText.Text = L10n.Get("ClipboardEmpty");
+        }
+        catch (Exception ex) { ProgressText.Text = ex.Message; }
     }
 
     private async void OnEjectClick(object sender, RoutedEventArgs e)
@@ -409,6 +514,24 @@ public partial class MainWindow : Window
     }
 
     private void OnExitClick(object sender, RoutedEventArgs e) => Close();
+
+    private void UpdateElevationUI()
+    {
+        bool admin = ThemeService.IsElevated();
+        AdminText.Text = admin ? L10n.Get("Elevated") : L10n.Get("NotElevated");
+        string switchText = admin ? L10n.Get("SwitchToUser") : L10n.Get("SwitchToAdmin");
+        RoleBtnText.Text = switchText;
+        RoleBtn.ToolTip = switchText;
+        MiSwitchRole.Header = switchText;
+    }
+
+    private void OnSwitchRoleClick(object sender, RoutedEventArgs e)
+    {
+        bool ok = ThemeService.IsElevated()
+            ? ElevationService.RestartAsUser()
+            : ElevationService.RestartAsAdmin();
+        if (!ok) ProgressText.Text = L10n.Get("RoleSwitchCancelled");
+    }
 
     private void OnThemeClick(object sender, RoutedEventArgs e)
     {

@@ -110,6 +110,25 @@
     </Grid>
   </Viewbox>
 
+  <Viewbox x:Key="IconPaste" x:Shared="False" Width="16" Height="16">
+    <Grid Width="24" Height="24">
+      <Path Data="M8,3 H16 V7 H8 Z" Fill="Transparent"
+            Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"
+            StrokeThickness="2" StrokeLineJoin="Round"/>
+      <Path Data="M6,5 H5 C3.9,5 3,5.9 3,7 V19 C3,20.1 3.9,21 5,21 H19 C20.1,21 21,20.1 21,19 V7 C21,5.9 20.1,5 19,5 H18" Fill="Transparent"
+            Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"
+            StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"/>
+    </Grid>
+  </Viewbox>
+
+  <Viewbox x:Key="IconShield" x:Shared="False" Width="16" Height="16">
+    <Grid Width="24" Height="24">
+      <Path Data="M12,2 L20,5.2 V11 C20,16.8 16.6,20.4 12,22 C7.4,20.4 4,16.8 4,11 V5.2 Z" Fill="Transparent"
+            Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"
+            StrokeThickness="2.2" StrokeLineJoin="Round"/>
+    </Grid>
+  </Viewbox>
+
   <Style TargetType="Button">
     <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}"/>
     <Setter Property="Padding" Value="12,6"/>
