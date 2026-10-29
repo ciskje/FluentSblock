@@ -6,7 +6,11 @@
         FontFamily="{StaticResource AppFontFamily}">
   <StackPanel Margin="16">
     <StackPanel Orientation="Horizontal">
-      <Image Source="icon.ico" Width="64" Height="64" Margin="0,0,16,0"/>
+      <Image Width="64" Height="64" Margin="0,0,16,0" RenderOptions.BitmapScalingMode="HighQuality">
+        <Image.Source>
+          <BitmapImage UriSource="icon.ico" DecodePixelWidth="64"/>
+        </Image.Source>
+      </Image>
       <StackPanel VerticalAlignment="Center">
         <TextBlock x:Name="AboutTitle" FontSize="16" FontWeight="SemiBold" TextWrapping="Wrap"/>
         <TextBlock x:Name="AboutVersion" Opacity="0.7" Margin="0,4,0,0"/>
