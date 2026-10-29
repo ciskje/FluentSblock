@@ -125,8 +125,7 @@ Goal: faster, robust scan following the real handle64.exe flow
 ## 0.2.14 — localized veto types
 
 - [x] 13 `Veto*` resx keys (5 languages) + fallback to raw enum name; cause now fully in UI language
-- [x] `AboutText` 0.2.14; `VERSION`+csproj `0.2.14`
-- [ ] Tag `v0.2.14`
+- [x] `AboutText` 0.2.14; `VERSION`+csproj `0.2.14`; build verde; commit + tag `v0.2.14` + push; `dist/` riallineata
 
 ## 0.2.13 — dedicated eject error dialog
 
