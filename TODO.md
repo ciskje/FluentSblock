@@ -1,7 +1,7 @@
 # FluentSblock — TODO.md
 
 Activity tracking. Check only what is verified with a green build.
-Current version: `0.2.4` (see `VERSION`).
+Current version: `0.2.5` (see `VERSION`).
 
 ## Version legend
 
@@ -121,6 +121,13 @@ Goal: faster, robust scan following the real handle64.exe flow
 - [ ] Manual test: plug E:, implicit preview check, real eject (confirmation with holders, veto with open file)
 - [ ] Manual test: CSV/TSV export, Help>log, USB insertion → auto-refresh
 - [ ] Tag `v0.2.0`
+
+## 0.2.5 — honest tagline + About dialog with big icon
+
+- [x] Tagline "who holds files open?" in AppTitle (5 languages), README, csproj Description
+- [x] About dialog with big app icon (64px), name, version, description + OK
+- [x] `AboutText` 0.2.5; `VERSION`+csproj `0.2.5`; green build
+- [ ] Tag `v0.2.5`
 
 ## 0.2.4 — admin-blocked drop warning
 
