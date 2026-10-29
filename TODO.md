@@ -128,6 +128,7 @@ Goal: faster, robust scan following the real handle64.exe flow
 - [x] `AboutText` 0.2.17; `VERSION`+csproj `0.2.17`; green build
 - [x] Manual test: launches without UAC as User; switch to Admin and back works
 - [x] Tag `v0.2.17`
+- [x] Release v0.2.17 (Latest): `dist/` realigned (exe+setup-0.2.17+msix+README+VERSION.txt), GitHub release with 3 assets
 
 ## 0.2.16 — Admin/User switch button
 
