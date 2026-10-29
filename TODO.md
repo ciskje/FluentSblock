@@ -126,8 +126,7 @@ Goal: faster, robust scan following the real handle64.exe flow
 
 - [x] `EjectErrorDialog` (warning icon, title, cause, remedy, OK) instead of a status-bar line; structured `EjectResult` from the service
 - [x] `EjectDialogTitle/VetoCause/VetoRemedy/ErrorCause/ErrorRemedy` resx 5 languages; dead `EjectVeto` key removed
-- [x] `AboutText` 0.2.13; `VERSION`+csproj `0.2.13`
-- [ ] Tag `v0.2.13`
+- [x] `AboutText` 0.2.13; `VERSION`+csproj `0.2.13`; build verde; dialog verificato headless (DIALOG-OK); commit + tag `v0.2.13` + push; `dist/` riallineata
 
 ## 0.2.12 — correct veto code + friendly device names
 
