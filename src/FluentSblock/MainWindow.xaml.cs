@@ -376,11 +376,30 @@ public partial class MainWindow : Window
         PaintStatus("WarningBrush");
         try
         {
-            var (ejected, message) = await EjectService.TryEjectAsync(letter, cts.Token);
-            ProgressText.Text = message;
-            PaintStatus(ejected ? "SuccessBrush" : "ErrorBrush");
-            Log.Info($"eject drive={letter} ejected={ejected}: {message}");
-            if (ejected) await RefreshDrivesAsync();
+            var result = await EjectService.TryEjectAsync(letter, cts.Token);
+            if (result.Ejected)
+            {
+                ProgressText.Text = L10n.Get("EjectOk");
+                PaintStatus("SuccessBrush");
+                Log.Info($"eject drive={letter} ok");
+                await RefreshDrivesAsync();
+                return;
+            }
+            string cause, remedy;
+            if (result.VetoType != null)
+            {
+                cause = string.Format(L10n.Get("EjectVetoCause"), result.VetoType, result.VetoName);
+                remedy = L10n.Get("EjectVetoRemedy");
+            }
+            else
+            {
+                cause = string.Format(L10n.Get("EjectErrorCause"), result.ErrorCode);
+                remedy = L10n.Get("EjectErrorRemedy");
+            }
+            ProgressText.Text = cause;
+            PaintStatus("ErrorBrush");
+            Log.Info($"eject drive={letter} blocked: {cause}");
+            new EjectErrorDialog(L10n.Get("EjectDialogTitle"), cause, remedy) { Owner = this }.ShowDialog();
         }
         catch (Exception ex) { ProgressText.Text = ex.Message; PaintStatus("ErrorBrush"); }
         finally { StatusText.Text = L10n.Get("StatusReady"); }

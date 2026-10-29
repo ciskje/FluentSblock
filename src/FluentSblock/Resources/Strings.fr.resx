@@ -34,12 +34,17 @@
   <data name="StatusScanning" xml:space="preserve"><value>Analyse…</value></data>
   <data name="NotElevated" xml:space="preserve"><value>Non élevé — exécutez en administrateur pour des résultats complets</value></data>
   <data name="Elevated" xml:space="preserve"><value>Élevé</value></data>
-  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.12 — liste les processus avec fichiers ouverts sur lecteurs amovibles.</value></data>
+  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.13 — liste les processus avec fichiers ouverts sur lecteurs amovibles.</value></data>
   <data name="ScanProgress" xml:space="preserve"><value>Analyse des handles {0}/{1}…</value></data>
   <data name="ScanFailedHandles" xml:space="preserve"><value>Impossible de lire les handles système (erreur 0x{0:X8}). Essayez en administrateur.</value></data>
   <data name="LocksFound" xml:space="preserve"><value>{0} handles ouverts</value></data>
   <data name="RmFallback" xml:space="preserve"><value>Restart Manager : aucun résultat, analyse des handles…</value></data>
   <data name="EjectOk" xml:space="preserve"><value>Le périphérique peut être retiré en toute sécurité.</value></data>
+  <data name="EjectDialogTitle" xml:space="preserve"><value>Impossible d'éjecter le périphérique</value></data>
+  <data name="EjectVetoCause" xml:space="preserve"><value>Bloqué par {0} : {1}.</value></data>
+  <data name="EjectVetoRemedy" xml:space="preserve"><value>Fermez les programmes listés (voir le tableau ci-dessus), puis réessayez. Si rien n'est listé, attendez quelques secondes et réessayez.</value></data>
+  <data name="EjectErrorCause" xml:space="preserve"><value>Échec de l'éjection (erreur 0x{0:X8}).</value></data>
+  <data name="EjectErrorRemedy" xml:space="preserve"><value>Exécutez en administrateur et réessayez. Si ça persiste, utilisez le retrait sécurisé de Windows.</value></data>
   <data name="ElevatedDropHint" xml:space="preserve"><value>Exécuté en administrateur : le glisser-déposer depuis l'Explorateur est bloqué par Windows — utilisez Parcourir ou collez le chemin.</value></data>
   <data name="MenuAutostart" xml:space="preserve"><value>Démarrer avec Windows</value></data>
   <data name="FilterHint" xml:space="preserve"><value>Filtrer par processus ou nom de fichier</value></data>
@@ -49,7 +54,6 @@
   <data name="MenuExportCsv" xml:space="preserve"><value>Exporter CSV</value></data>
   <data name="MenuExportTsv" xml:space="preserve"><value>Exporter TSV</value></data>
   <data name="MenuShowLog" xml:space="preserve"><value>Afficher le journal</value></data>
-  <data name="EjectVeto" xml:space="preserve"><value>Retrait bloqué ({0}) : {1}</value></data>
   <data name="EjectError" xml:space="preserve"><value>Échec de l'éjection (erreur 0x{0:X8}).</value></data>
   <data name="EjectConfirmTitle" xml:space="preserve"><value>Éjecter le périphérique ?</value></data>
   <data name="EjectConfirmText" xml:space="preserve"><value>{0} handles ouverts sur ce lecteur. Éjecter quand même ?</value></data>

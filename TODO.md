@@ -1,7 +1,7 @@
 # FluentSblock — TODO.md
 
 Activity tracking. Check only what is verified with a green build.
-Current version: `0.2.12` (see `VERSION`).
+Current version: `0.2.13` (see `VERSION`).
 
 ## Version legend
 
@@ -121,6 +121,13 @@ Goal: faster, robust scan following the real handle64.exe flow
 - [ ] Manual test: plug E:, implicit preview check, real eject (confirmation with holders, veto with open file)
 - [ ] Manual test: CSV/TSV export, Help>log, USB insertion → auto-refresh
 - [ ] Tag `v0.2.0`
+
+## 0.2.13 — dedicated eject error dialog
+
+- [x] `EjectErrorDialog` (warning icon, title, cause, remedy, OK) instead of a status-bar line; structured `EjectResult` from the service
+- [x] `EjectDialogTitle/VetoCause/VetoRemedy/ErrorCause/ErrorRemedy` resx 5 languages; dead `EjectVeto` key removed
+- [x] `AboutText` 0.2.13; `VERSION`+csproj `0.2.13`
+- [ ] Tag `v0.2.13`
 
 ## 0.2.12 — correct veto code + friendly device names
 

@@ -106,13 +106,15 @@ public static class EjectService
     [DllImport("cfgmgr32.dll", CharSet = CharSet.Unicode)]
     private static extern uint CM_Get_Device_IDW(uint dnDevInst, StringBuilder buffer, uint bufferLen, uint ulFlags);
 
-    public static Task<(bool Ejected, string Message)> TryEjectAsync(string driveLetter, CancellationToken ct)
+    public sealed record EjectResult(bool Ejected, string? VetoType, string? VetoName, uint ErrorCode);
+
+    public static Task<EjectResult> TryEjectAsync(string driveLetter, CancellationToken ct)
     {
         return Task.Run(() =>
         {
             ct.ThrowIfCancellationRequested();
             var chain = ResolveEjectChain(driveLetter);
-            string? firstVeto = null;
+            string? vetoType = null, vetoName = null;
             uint lastRc = CR_SUCCESS;
             foreach (var (dev, _) in chain)
             {
@@ -120,15 +122,17 @@ public static class EjectService
                 if (CM_Get_DevNode_Status(out uint status, out _, dev, 0) == CR_SUCCESS
                     && (status & (DN_DISABLEABLE | DN_REMOVABLE)) == 0)
                     continue; // not ejectable: try the parent
-                var vetoName = new StringBuilder(MAX_PATH);
-                lastRc = CM_Request_Device_EjectW(dev, out var veto, vetoName, MAX_PATH, 0);
+                var vetoBuf = new StringBuilder(MAX_PATH);
+                lastRc = CM_Request_Device_EjectW(dev, out var veto, vetoBuf, MAX_PATH, 0);
                 if (lastRc == CR_SUCCESS)
-                    return (true, L10n.Get("EjectOk"));
-                if (lastRc == CR_REMOVE_VETOED && firstVeto == null)
-                    firstVeto = string.Format(L10n.Get("EjectVeto"), veto, vetoName.ToString());
+                    return new EjectResult(true, null, null, 0);
+                if (lastRc == CR_REMOVE_VETOED && vetoType == null)
+                {
+                    vetoType = veto.ToString();
+                    vetoName = vetoBuf.ToString();
+                }
             }
-            if (firstVeto != null) return (false, firstVeto);
-            return (false, string.Format(L10n.Get("EjectError"), lastRc));
+            return new EjectResult(false, vetoType, vetoName, lastRc);
         }, ct);
     }
 

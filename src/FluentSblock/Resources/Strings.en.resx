@@ -34,12 +34,17 @@
   <data name="StatusScanning" xml:space="preserve"><value>Scanning…</value></data>
   <data name="NotElevated" xml:space="preserve"><value>Not elevated — run as administrator for full results</value></data>
   <data name="Elevated" xml:space="preserve"><value>Elevated</value></data>
-  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.12 — lists processes with open files on removable drives.</value></data>
+  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.13 — lists processes with open files on removable drives.</value></data>
   <data name="ScanProgress" xml:space="preserve"><value>Scanning handles {0}/{1}…</value></data>
   <data name="ScanFailedHandles" xml:space="preserve"><value>Cannot read system handles (error 0x{0:X8}). Try running as administrator.</value></data>
   <data name="LocksFound" xml:space="preserve"><value>{0} open handles</value></data>
   <data name="RmFallback" xml:space="preserve"><value>Restart Manager: no result, scanning handles…</value></data>
   <data name="EjectOk" xml:space="preserve"><value>Device can be safely removed.</value></data>
+  <data name="EjectDialogTitle" xml:space="preserve"><value>Cannot eject device</value></data>
+  <data name="EjectVetoCause" xml:space="preserve"><value>Blocked by {0}: {1}.</value></data>
+  <data name="EjectVetoRemedy" xml:space="preserve"><value>Close the listed programs (see the holders table above), then try again. If nothing is listed, wait a few seconds and retry.</value></data>
+  <data name="EjectErrorCause" xml:space="preserve"><value>Ejection failed (error 0x{0:X8}).</value></data>
+  <data name="EjectErrorRemedy" xml:space="preserve"><value>Run as administrator and try again. If it persists, use Windows Safely Remove Hardware.</value></data>
   <data name="ElevatedDropHint" xml:space="preserve"><value>Running as administrator: drag &amp; drop from Explorer is blocked by Windows — use Browse or paste the path.</value></data>
   <data name="MenuAutostart" xml:space="preserve"><value>Start with Windows</value></data>
   <data name="FilterHint" xml:space="preserve"><value>Filter by process or file name</value></data>
@@ -49,7 +54,6 @@
   <data name="MenuExportCsv" xml:space="preserve"><value>Export CSV</value></data>
   <data name="MenuExportTsv" xml:space="preserve"><value>Export TSV</value></data>
   <data name="MenuShowLog" xml:space="preserve"><value>Show log</value></data>
-  <data name="EjectVeto" xml:space="preserve"><value>Removal blocked ({0}): {1}</value></data>
   <data name="EjectError" xml:space="preserve"><value>Eject failed (error 0x{0:X8}).</value></data>
   <data name="EjectConfirmTitle" xml:space="preserve"><value>Eject device?</value></data>
   <data name="EjectConfirmText" xml:space="preserve"><value>{0} open handles on this drive. Eject anyway?</value></data>
