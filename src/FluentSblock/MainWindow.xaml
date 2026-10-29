@@ -38,6 +38,12 @@
         </MenuItem>
         <Separator/>
         <MenuItem x:Name="MiAutostart" Header="Start with Windows" IsCheckable="True" Click="OnAutostartClick"/>
+        <MenuItem x:Name="MiTimeout" Header="Timeout">
+          <MenuItem Header="50 ms" Tag="50" IsCheckable="True" Click="OnTimeoutClick"/>
+          <MenuItem Header="100 ms" Tag="100" IsCheckable="True" Click="OnTimeoutClick"/>
+          <MenuItem Header="250 ms" Tag="250" IsCheckable="True" Click="OnTimeoutClick"/>
+          <MenuItem Header="500 ms" Tag="500" IsCheckable="True" Click="OnTimeoutClick"/>
+        </MenuItem>
       </MenuItem>
       <MenuItem x:Name="MiHelp" Header="_Help">
         <MenuItem x:Name="MiShowLog" Header="Show log" Click="OnShowLogClick"/>

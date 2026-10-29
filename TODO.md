@@ -1,7 +1,7 @@
 # FluentSblock — TODO.md
 
 Activity tracking. Check only what is verified with a green build.
-Current version: `0.2.14` (see `VERSION`).
+Current version: `0.2.15` (see `VERSION`).
 
 ## Version legend
 
@@ -121,6 +121,13 @@ Goal: faster, robust scan following the real handle64.exe flow
 - [ ] Manual test: plug E:, implicit preview check, real eject (confirmation with holders, veto with open file)
 - [ ] Manual test: CSV/TSV export, Help>log, USB insertion → auto-refresh
 - [ ] Tag `v0.2.0`
+
+## 0.2.15 — configurable handle timeout UI
+
+- [x] View>Timeout submenu (50/100/250/500 ms, checkable, persisted, applied at startup); resx `MenuTimeout` 5 languages
+- [x] `AppSettings.TimeoutMs` with load fix-up (default 100)
+- [x] `AboutText` 0.2.15; `VERSION`+csproj `0.2.15`; green build (smoke N/A: requireAdministrator needs UAC click)
+- [ ] Tag `v0.2.15`
 
 ## 0.2.14 — localized veto types
 

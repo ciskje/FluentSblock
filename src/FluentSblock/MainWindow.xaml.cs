@@ -60,6 +60,9 @@ public partial class MainWindow : Window
         MiAbout.Header = L10n.Get("MenuAbout");
         MiAutostart.Header = L10n.Get("MenuAutostart");
         MiAutostart.IsChecked = IsAutostart();
+        MiTimeout.Header = L10n.Get("MenuTimeout");
+        RefreshTimeoutChecks();
+        HandleEnumerator.QueryNameTimeoutMs = _settings.TimeoutMs;
         MiShowLog.Header = L10n.Get("MenuShowLog");
         MiThemeSystem.Header = L10n.Get("ThemeSystem");
         MiThemeLight.Header = L10n.Get("ThemeLight");
@@ -513,6 +516,23 @@ public partial class MainWindow : Window
                 k.DeleteValue("FluentSblock", false);
         }
         catch (Exception ex) { ProgressText.Text = ex.Message; }
+    }
+
+    private void RefreshTimeoutChecks()
+    {
+        foreach (var item in MiTimeout.Items.OfType<System.Windows.Controls.MenuItem>())
+            item.IsChecked = item.Tag is string s && s == _settings.TimeoutMs.ToString();
+    }
+
+    private void OnTimeoutClick(object sender, RoutedEventArgs e)
+    {
+        if (sender is System.Windows.Controls.MenuItem mi && mi.Tag is string s && int.TryParse(s, out int ms))
+        {
+            HandleEnumerator.QueryNameTimeoutMs = ms;
+            _settings = _settings with { TimeoutMs = HandleEnumerator.QueryNameTimeoutMs };
+            SaveSettings();
+            RefreshTimeoutChecks();
+        }
     }
 
     private void OnAboutClick(object sender, RoutedEventArgs e)

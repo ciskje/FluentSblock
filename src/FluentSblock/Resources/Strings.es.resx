@@ -34,7 +34,7 @@
   <data name="StatusScanning" xml:space="preserve"><value>Analizando…</value></data>
   <data name="NotElevated" xml:space="preserve"><value>No elevado — ejecute como administrador para resultados completos</value></data>
   <data name="Elevated" xml:space="preserve"><value>Elevado</value></data>
-  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.14 — lista procesos con archivos abiertos en unidades extraíbles.</value></data>
+  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.15 — lista procesos con archivos abiertos en unidades extraíbles.</value></data>
   <data name="ScanProgress" xml:space="preserve"><value>Examinando identificadores {0}/{1}…</value></data>
   <data name="ScanFailedHandles" xml:space="preserve"><value>No se pudieron leer los identificadores del sistema (error 0x{0:X8}). Pruebe como administrador.</value></data>
   <data name="LocksFound" xml:space="preserve"><value>{0} identificadores abiertos</value></data>
@@ -53,6 +53,7 @@
   <data name="VetoLegacyDriver" xml:space="preserve"><value>Controlador heredado</value></data>
   <data name="VetoInsufficientRights" xml:space="preserve"><value>Derechos insuficientes</value></data>
   <data name="EjectOk" xml:space="preserve"><value>El dispositivo se puede extraer de forma segura.</value></data>
+  <data name="MenuTimeout" xml:space="preserve"><value>Tiempo de espera</value></data>
   <data name="EjectDialogTitle" xml:space="preserve"><value>No se puede expulsar el dispositivo</value></data>
   <data name="EjectVetoCause" xml:space="preserve"><value>Bloqueado por {0}: {1}.</value></data>
   <data name="EjectVetoRemedy" xml:space="preserve"><value>Cierre los programas listados (ver la tabla de arriba) e inténtelo de nuevo. Si no hay nada, espere unos segundos e inténtelo de nuevo.</value></data>

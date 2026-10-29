@@ -34,7 +34,7 @@
   <data name="StatusScanning" xml:space="preserve"><value>Suche…</value></data>
   <data name="NotElevated" xml:space="preserve"><value>Nicht erhöht — als Administrator ausführen für volle Ergebnisse</value></data>
   <data name="Elevated" xml:space="preserve"><value>Erhöht</value></data>
-  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.14 — listet Prozesse mit geöffneten Dateien auf Wechseldatenträgern.</value></data>
+  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.15 — listet Prozesse mit geöffneten Dateien auf Wechseldatenträgern.</value></data>
   <data name="ScanProgress" xml:space="preserve"><value>Handles werden gescannt {0}/{1}…</value></data>
   <data name="ScanFailedHandles" xml:space="preserve"><value>System-Handles konnten nicht gelesen werden (Fehler 0x{0:X8}). Als Administrator versuchen.</value></data>
   <data name="LocksFound" xml:space="preserve"><value>{0} offene Handles</value></data>
@@ -53,6 +53,7 @@
   <data name="VetoLegacyDriver" xml:space="preserve"><value>Legacy-Treiber</value></data>
   <data name="VetoInsufficientRights" xml:space="preserve"><value>Unzureichende Rechte</value></data>
   <data name="EjectOk" xml:space="preserve"><value>Das Gerät kann sicher entfernt werden.</value></data>
+  <data name="MenuTimeout" xml:space="preserve"><value>Zeitlimit</value></data>
   <data name="EjectDialogTitle" xml:space="preserve"><value>Gerät kann nicht ausgeworfen werden</value></data>
   <data name="EjectVetoCause" xml:space="preserve"><value>Blockiert durch {0}: {1}.</value></data>
   <data name="EjectVetoRemedy" xml:space="preserve"><value>Aufgelistete Programme schließen (siehe Tabelle oben), dann erneut versuchen. Wenn nichts aufgelistet ist, einige Sekunden warten und erneut versuchen.</value></data>

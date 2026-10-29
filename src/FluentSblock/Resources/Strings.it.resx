@@ -34,7 +34,7 @@
   <data name="StatusScanning" xml:space="preserve"><value>Scansione…</value></data>
   <data name="NotElevated" xml:space="preserve"><value>Non elevato — esegui come amministratore per risultati completi</value></data>
   <data name="Elevated" xml:space="preserve"><value>Elevato</value></data>
-  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.14 — elenca i processi con file aperti sui dischi rimovibili.</value></data>
+  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.15 — elenca i processi con file aperti sui dischi rimovibili.</value></data>
   <data name="ScanProgress" xml:space="preserve"><value>Scansione handle {0}/{1}…</value></data>
   <data name="ScanFailedHandles" xml:space="preserve"><value>Impossibile leggere gli handle di sistema (errore 0x{0:X8}). Prova come amministratore.</value></data>
   <data name="LocksFound" xml:space="preserve"><value>{0} handle aperti</value></data>
@@ -53,6 +53,7 @@
   <data name="VetoLegacyDriver" xml:space="preserve"><value>Driver legacy</value></data>
   <data name="VetoInsufficientRights" xml:space="preserve"><value>Diritti insufficienti</value></data>
   <data name="EjectOk" xml:space="preserve"><value>Il dispositivo può essere rimosso in sicurezza.</value></data>
+  <data name="MenuTimeout" xml:space="preserve"><value>Timeout</value></data>
   <data name="EjectDialogTitle" xml:space="preserve"><value>Impossibile espellere il dispositivo</value></data>
   <data name="EjectVetoCause" xml:space="preserve"><value>Bloccato da {0}: {1}.</value></data>
   <data name="EjectVetoRemedy" xml:space="preserve"><value>Chiudi i programmi elencati (vedi la tabella sopra), poi riprova. Se non c'è nulla, attendi qualche secondo e riprova.</value></data>

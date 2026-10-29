@@ -6,9 +6,9 @@ namespace FluentSblock.Services;
 /// <summary>Theme/language/column layout in %APPDATA%. Never throws; defaults on any failure.</summary>
 public static class AppSettings
 {
-    public sealed record Data(string Theme, string Lang, Dictionary<string, ColumnState> Columns)
+    public sealed record Data(string Theme, string Lang, int TimeoutMs, Dictionary<string, ColumnState> Columns)
     {
-        public Data() : this("system", "", new Dictionary<string, ColumnState>()) { }
+        public Data() : this("system", "", 100, new Dictionary<string, ColumnState>()) { }
     }
 
     public sealed record ColumnState(int DisplayIndex, double Width);
@@ -24,7 +24,12 @@ public static class AppSettings
             if (File.Exists(FilePath))
             {
                 var data = JsonSerializer.Deserialize<Data>(File.ReadAllText(FilePath));
-                if (data != null) return data with { Columns = data.Columns ?? new() };
+                if (data != null)
+                    return data with
+                    {
+                        Columns = data.Columns ?? new(),
+                        TimeoutMs = data.TimeoutMs is >= 20 and <= 5000 ? data.TimeoutMs : 100
+                    };
             }
         }
         catch { }
