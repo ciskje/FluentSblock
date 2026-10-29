@@ -16,6 +16,19 @@ ejection — and who is holding a given file locked.
   inline vector icons, theme/language persistence, autostart option.
 - Languages: English, French, Italian, German, Spanish (full EFIGS).
 
+## Download
+
+Get the latest release from the
+[releases page](https://github.com/ciskje/FluentSblock/releases/latest):
+
+| File | What |
+|---|---|
+| `FluentSblock-Setup-0.2.6.exe` | Per-user installer (recommended): Start Menu entry, Settings uninstall, no admin, no .NET needed |
+| `FluentSblock.msix` | Signed MSIX package (clean identity). First install the cert: double-click `installer/FluentSblock.cer` → Local Machine (admin) → Trusted People, then open the `.msix` |
+| `FluentSblock.exe` | Single self-contained app (no install, no .NET needed) |
+
+Unsigned builds: on first run SmartScreen shows a blue screen → "More info" → "Run anyway".
+
 ## Install
 
 Prebuilt files live in [`dist/`](dist):
