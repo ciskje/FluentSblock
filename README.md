@@ -29,10 +29,9 @@ Get the latest release from the
 
 Unsigned builds: on first run SmartScreen shows a blue screen → "More info" → "Run anyway".
 
-> Tip: the app elevates at launch (UAC) to see all users' processes. To check a
-> file, drag & drop it as standard user — or, elevated included, use the Paste
-> button with a copied file/path, Browse, or Ctrl+V. The Admin/User button
-> restarts as standard user and back.
+> Tip: the app starts as standard user (no UAC prompt). It sees your processes;
+> for system-wide results — System, other users, elevated processes — use the
+> Admin/User button in the toolbar to restart elevated, then switch back.
 
 > Note: there is no `dist/` folder in git (build outputs are gitignored) —
 > every file above comes from the release assets.

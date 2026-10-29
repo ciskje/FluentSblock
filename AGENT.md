@@ -5,7 +5,7 @@ Specs for coding agents. Source of truth for purpose, architecture, UI, versioni
 ## 1. Identity
 
 - Name: `FluentSblock` (working title: "who holds files open?")
-- Current version: `0.2.16` — see `VERSION` (single-line `X.Y.Z`).
+- Current version: `0.2.17` — see `VERSION` (single-line `X.Y.Z`).
 - Repo/dir: `Z:\Lavorazioni\2026\AI\FluentSblock`.
 - Stack v0.1: **C# .NET 8 WPF** (no WinUI3 packaging) with manual Fluent 2 styling.
   Reason: builds with only SDK 8.0.425 installed, no extra workloads, single testable exe.
@@ -63,8 +63,8 @@ installer/                      # FluentSblock.iss (Program Files Inno, versione
 AGENT.md                        # this file
 TODO.md                         # activity tracking
 src/FluentSblock/
-  FluentSblock.csproj           # net8.0-windows, UseWPF, x64, Version 0.2.16
-  app.manifest                  # asInvoker + auto-elevate at startup (--user opts out for the User instance)
+  FluentSblock.csproj           # net8.0-windows, UseWPF, x64, Version 0.2.17
+  app.manifest                  # asInvoker: starts as User, Admin on demand via the switch button
 src/FluentSblock.Tests/
   FluentSblock.Tests.csproj     # xUnit golden: locked fixture vs handle64 -v
   App.xaml[.cs]                 # theme, language, DWM Mica

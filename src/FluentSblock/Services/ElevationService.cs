@@ -13,11 +13,10 @@ public static class ElevationService
         ?? Process.GetCurrentProcess().MainModule?.FileName
         ?? "";
 
-    private static string PreservedArgs(bool wantUserFlag)
+    private static string PreservedArgs()
     {
         var args = Environment.GetCommandLineArgs().Skip(1).ToList();
         args.RemoveAll(a => a.Equals("--user", StringComparison.OrdinalIgnoreCase));
-        if (wantUserFlag) args.Add("--user");
         return string.Join(" ", args.Select(Quote));
     }
 
@@ -29,7 +28,7 @@ public static class ElevationService
     {
         try
         {
-            Process.Start(new ProcessStartInfo(ExePath, PreservedArgs(wantUserFlag: false))
+            Process.Start(new ProcessStartInfo(ExePath, PreservedArgs())
             {
                 UseShellExecute = true,
                 Verb = "runas"
@@ -47,7 +46,7 @@ public static class ElevationService
     /// </summary>
     public static bool RestartAsUser()
     {
-        string args = PreservedArgs(wantUserFlag: true);
+        string args = PreservedArgs();
         var before = new HashSet<int>();
         try
         {

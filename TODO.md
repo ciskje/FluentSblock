@@ -1,7 +1,7 @@
 # FluentSblock — TODO.md
 
 Activity tracking. Check only what is verified with a green build.
-Current version: `0.2.16` (see `VERSION`).
+Current version: `0.2.17` (see `VERSION`).
 
 ## Version legend
 
@@ -121,6 +121,13 @@ Goal: faster, robust scan following the real handle64.exe flow
 - [ ] Manual test: plug E:, implicit preview check, real eject (confirmation with holders, veto with open file)
 - [ ] Manual test: CSV/TSV export, Help>log, USB insertion → auto-refresh
 - [ ] Tag `v0.2.0`
+
+## 0.2.17 — start as standard user
+
+- [x] Auto-elevation at startup removed: no more UAC at every launch; elevation is on demand via the Admin/User switch button (`--user` flag retired)
+- [x] `AboutText` 0.2.17; `VERSION`+csproj `0.2.17`; green build
+- [ ] Manual test: launches without UAC as User; switch to Admin and back works
+- [ ] Tag `v0.2.17`
 
 ## 0.2.16 — Admin/User switch button
 
