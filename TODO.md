@@ -126,8 +126,8 @@ Goal: faster, robust scan following the real handle64.exe flow
 
 - [x] Auto-elevation at startup removed: no more UAC at every launch; elevation is on demand via the Admin/User switch button (`--user` flag retired)
 - [x] `AboutText` 0.2.17; `VERSION`+csproj `0.2.17`; green build
-- [ ] Manual test: launches without UAC as User; switch to Admin and back works
-- [ ] Tag `v0.2.17`
+- [x] Manual test: launches without UAC as User; switch to Admin and back works
+- [x] Tag `v0.2.17`
 
 ## 0.2.16 — Admin/User switch button
 
