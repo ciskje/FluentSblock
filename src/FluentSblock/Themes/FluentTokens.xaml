@@ -1,0 +1,123 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!-- Fluent 2 tokens for Windows 11: 4px in-page, 8px overlay. -->
+  <CornerRadius x:Key="ControlCornerRadius">4,4,4,4</CornerRadius>
+  <CornerRadius x:Key="OverlayCornerRadius">8,8,8,8</CornerRadius>
+
+  <FontFamily x:Key="AppFontFamily">Segoe UI Variable, Segoe UI</FontFamily>
+
+  <!-- Accent follows the Windows system color at runtime (ThemeService.ApplySystemAccent);
+       Success/Warning/Error are fixed MS palette tones for status. -->
+  <SolidColorBrush x:Key="AccentBrush" Color="#0078D4"/>
+  <SolidColorBrush x:Key="SuccessBrush" Color="#107C10"/>
+  <SolidColorBrush x:Key="WarningBrush" Color="#D83B01"/>
+  <SolidColorBrush x:Key="ErrorBrush" Color="#D13438"/>
+
+  <!-- Inline vector icons (SVG-style path data, 24x24 grid, shown at 16px).
+       x:Shared=False: every use gets its own instance.
+       Strokes/fills bind to the parent Control.Foreground, so disabled
+       buttons gray out automatically. No font, no dependency. -->
+  <Viewbox x:Key="IconRefresh" x:Shared="False" Width="16" Height="16">
+    <Grid Width="24" Height="24">
+      <Path Data="M20,12 A8,8 0 1,1 12,4" Fill="Transparent"
+            Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"
+            StrokeThickness="2.2" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+      <Polygon Points="12,1 17,5.5 11.5,7.5"
+               Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"/>
+    </Grid>
+  </Viewbox>
+
+  <Viewbox x:Key="IconEject" x:Shared="False" Width="16" Height="16">
+    <Grid Width="24" Height="24">
+      <Polygon Points="12,5 19,15 5,15"
+               Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"/>
+      <Rectangle Width="14" Height="2.6" Margin="5,17,5,4.4"
+                 Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"/>
+    </Grid>
+  </Viewbox>
+
+  <Viewbox x:Key="IconExit" x:Shared="False" Width="16" Height="16">
+    <Grid Width="24" Height="24">
+      <Path Data="M13,4 H5 V20 H13" Fill="Transparent"
+            Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"
+            StrokeThickness="2.2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"/>
+      <Path Data="M10,12 H21 M17,8.5 L20.5,12 L17,15.5" Fill="Transparent"
+            Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"
+            StrokeThickness="2.2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"/>
+    </Grid>
+  </Viewbox>
+
+  <Viewbox x:Key="IconTheme" x:Shared="False" Width="16" Height="16">
+    <Grid Width="24" Height="24">
+      <Path Data="M12,3 A9,9 0 1,0 12,21 Z"
+            Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"/>
+    </Grid>
+  </Viewbox>
+
+  <Viewbox x:Key="IconLanguage" x:Shared="False" Width="16" Height="16">
+    <Grid Width="24" Height="24">
+      <Ellipse Width="18" Height="18" Margin="3" Fill="Transparent"
+               Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"
+               StrokeThickness="2"/>
+      <Ellipse Width="8" Height="18" Margin="8,3" Fill="Transparent"
+               Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"
+               StrokeThickness="1.6"/>
+      <Path Data="M3.5,9.5 H20.5 M3.5,14.5 H20.5" Fill="Transparent"
+            Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"
+            StrokeThickness="1.6"/>
+    </Grid>
+  </Viewbox>
+
+  <Viewbox x:Key="IconAbout" x:Shared="False" Width="16" Height="16">
+    <Grid Width="24" Height="24">
+      <Ellipse Width="18" Height="18" Margin="3" Fill="Transparent"
+               Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"
+               StrokeThickness="2"/>
+      <Ellipse Width="2.6" Height="2.6" Margin="10.7,7.2,10.7,14.2"
+               Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"/>
+      <Rectangle Width="2.6" Height="6.4" Margin="10.7,11,10.7,6.6"
+                 Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"/>
+    </Grid>
+  </Viewbox>
+
+  <Viewbox x:Key="IconFolder" x:Shared="False" Width="16" Height="16">
+    <Grid Width="24" Height="24">
+      <Path Data="M10,4 H4 C2.9,4 2,4.9 2,6 L2,18 C2,19.1 2.9,20 4,20 H20 C21.1,20 22,19.1 22,18 V8 C22,6.9 21.1,6 20,6 H12 L10,4 Z"
+            Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"/>
+    </Grid>
+  </Viewbox>
+
+  <Viewbox x:Key="IconSearch" x:Shared="False" Width="16" Height="16">
+    <Grid Width="24" Height="24">
+      <Ellipse Width="13" Height="13" Margin="3,3,8,8" Fill="Transparent"
+               Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"
+               StrokeThickness="2.2"/>
+      <Path Data="M14.5,14.5 L21,21" Fill="Transparent"
+            Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Control}}"
+            StrokeThickness="2.6" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+    </Grid>
+  </Viewbox>
+
+  <Style TargetType="Button">
+    <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}"/>
+    <Setter Property="Padding" Value="12,6"/>
+    <Setter Property="MinHeight" Value="32"/>
+  </Style>
+  <Style TargetType="TextBox">
+    <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}"/>
+    <Setter Property="MinHeight" Value="32"/>
+    <Setter Property="VerticalContentAlignment" Value="Center"/>
+  </Style>
+  <Style TargetType="ComboBox">
+    <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}"/>
+    <Setter Property="MinHeight" Value="32"/>
+  </Style>
+  <Style TargetType="DataGrid">
+    <Setter Property="FontFamily" Value="{StaticResource AppFontFamily}"/>
+    <Setter Property="GridLinesVisibility" Value="None"/>
+    <Setter Property="HeadersVisibility" Value="Column"/>
+    <Setter Property="IsReadOnly" Value="True"/>
+    <Setter Property="AutoGenerateColumns" Value="False"/>
+    <Setter Property="CanUserAddRows" Value="False"/>
+  </Style>
+</ResourceDictionary>

@@ -1,0 +1,11 @@
+# Build outputs (rebuild via AGENT.md §9; Debug via run-debug.bat)
+bin/
+obj/
+dist/
+installer/*-Setup.exe
+TestResults/
+
+# VS / user files
+.vs/
+*.user
+*.suo

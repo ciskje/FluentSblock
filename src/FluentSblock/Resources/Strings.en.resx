@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="AppTitle" xml:space="preserve"><value>FluentSblock — who blocks the USB?</value></data>
+  <data name="MenuFile" xml:space="preserve"><value>_File</value></data>
+  <data name="MenuView" xml:space="preserve"><value>_View</value></data>
+  <data name="MenuHelp" xml:space="preserve"><value>_Help</value></data>
+  <data name="MenuRefresh" xml:space="preserve"><value>_Refresh</value></data>
+  <data name="MenuEject" xml:space="preserve"><value>_Eject</value></data>
+  <data name="MenuExit" xml:space="preserve"><value>E_xit</value></data>
+  <data name="MenuTheme" xml:space="preserve"><value>_Theme</value></data>
+  <data name="MenuLanguage" xml:space="preserve"><value>_Language</value></data>
+  <data name="MenuAbout" xml:space="preserve"><value>_About</value></data>
+  <data name="ThemeSystem" xml:space="preserve"><value>System</value></data>
+  <data name="ThemeLight" xml:space="preserve"><value>Light</value></data>
+  <data name="ThemeDark" xml:space="preserve"><value>Dark</value></data>
+  <data name="DriveGroup" xml:space="preserve"><value>Removable drives</value></data>
+  <data name="NoDrives" xml:space="preserve"><value>No removable drives found.</value></data>
+  <data name="HoldersGroup" xml:space="preserve"><value>Programs with open files</value></data>
+  <data name="NoLocks" xml:space="preserve"><value>No open files — safe to eject.</value></data>
+  <data name="ColProcess" xml:space="preserve"><value>Process</value></data>
+  <data name="ColPid" xml:space="preserve"><value>PID</value></data>
+  <data name="ColUser" xml:space="preserve"><value>User</value></data>
+  <data name="ColHandle" xml:space="preserve"><value>Handle</value></data>
+  <data name="ColFile" xml:space="preserve"><value>File</value></data>
+  <data name="CheckFileGroup" xml:space="preserve"><value>Check a file — who has it locked?</value></data>
+  <data name="CheckFileHint" xml:space="preserve"><value>Full path, e.g. E:\docs\file.txt</value></data>
+  <data name="CheckFileButton" xml:space="preserve"><value>Who is locking it?</value></data>
+  <data name="Browse" xml:space="preserve"><value>Browse…</value></data>
+  <data name="StatusReady" xml:space="preserve"><value>Ready</value></data>
+  <data name="StatusScanning" xml:space="preserve"><value>Scanning…</value></data>
+  <data name="NotElevated" xml:space="preserve"><value>Not elevated — run as administrator for full results</value></data>
+  <data name="Elevated" xml:space="preserve"><value>Elevated</value></data>
+  <data name="AboutText" xml:space="preserve"><value>FluentSblock 0.2.0 — lists processes with open files on removable drives.</value></data>
+  <data name="ScanProgress" xml:space="preserve"><value>Scanning handles {0}/{1}…</value></data>
+  <data name="ScanFailedHandles" xml:space="preserve"><value>Cannot read system handles (error 0x{0:X8}). Try running as administrator.</value></data>
+  <data name="LocksFound" xml:space="preserve"><value>{0} open handles</value></data>
+  <data name="RmFallback" xml:space="preserve"><value>Restart Manager: no result, scanning handles…</value></data>
+  <data name="EjectOk" xml:space="preserve"><value>Device can be safely removed.</value></data>
+  <data name="MenuAutostart" xml:space="preserve"><value>Start with Windows</value></data>
+  <data name="FilterHint" xml:space="preserve"><value>Filter by process or file name</value></data>
+  <data name="MenuCopyPath" xml:space="preserve"><value>Copy path</value></data>
+  <data name="MenuOpenLocation" xml:space="preserve"><value>Open file location</value></data>
+  <data name="ColAccess" xml:space="preserve"><value>Access</value></data>
+  <data name="MenuExportCsv" xml:space="preserve"><value>Export CSV</value></data>
+  <data name="MenuExportTsv" xml:space="preserve"><value>Export TSV</value></data>
+  <data name="MenuShowLog" xml:space="preserve"><value>Show log</value></data>
+  <data name="EjectVeto" xml:space="preserve"><value>Removal blocked ({0}): {1}</value></data>
+  <data name="EjectError" xml:space="preserve"><value>Eject failed (error 0x{0:X8}).</value></data>
+  <data name="EjectConfirmTitle" xml:space="preserve"><value>Eject device?</value></data>
+  <data name="EjectConfirmText" xml:space="preserve"><value>{0} open handles on this drive. Eject anyway?</value></data>
+  <data name="BrowseTitle" xml:space="preserve"><value>Select a file or folder</value></data>
+</root>
